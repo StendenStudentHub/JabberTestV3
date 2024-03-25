@@ -27,9 +27,3 @@ sonar {
         property("sonar.host.url", "https://sonarcloud.io")
     }
 }
-
-jacocoTestReport {
-    reports {
-        xml.required = true
-    }
-}
