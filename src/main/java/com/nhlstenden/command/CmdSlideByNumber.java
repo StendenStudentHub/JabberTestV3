@@ -12,6 +12,6 @@ public class CmdSlideByNumber extends Command
     {
         //How are we going to do this without changing the abstract method
         //in Command class? Because we need a number to go to the slide.
-        this.getSlideViewer().goToSlideNumber();
+        //this.getSlideViewer().goToSlideNumber();
     }
 }
