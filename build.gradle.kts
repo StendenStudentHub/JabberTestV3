@@ -1,6 +1,7 @@
 plugins {
     id("java")
     id("org.sonarqube") version "4.4.1.3373"
+    id "jacoco"
 }
 
 group = "org.example"
@@ -24,5 +25,11 @@ sonar {
         property("sonar.projectKey", "StendenStudentHub_JabberTestV3")
         property("sonar.organization", "stendenstudenthub")
         property("sonar.host.url", "https://sonarcloud.io")
+    }
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = true
     }
 }
