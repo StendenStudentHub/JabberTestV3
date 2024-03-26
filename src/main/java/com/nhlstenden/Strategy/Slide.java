@@ -15,7 +15,7 @@ public class Slide
     {
         this.numberOfItemsToDraw = 0;
         this.drawAllItems = false;
-        this.items = new Vector<SlideItem>();
+        this.items = new Vector<>();
     }
 
     public boolean isDrawAllItems()
@@ -70,7 +70,8 @@ public class Slide
 
     public SlideItem getSlideItem(int number)
     {
-        return getSlideItem(number);
+        //Moet nog woren geimplementeerd
+        return null;
     }
 
     public Vector<SlideItem> getSlideItems()

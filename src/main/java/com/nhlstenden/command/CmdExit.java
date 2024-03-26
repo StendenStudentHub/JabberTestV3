@@ -10,6 +10,6 @@ public class CmdExit extends Command
     @Override
     public void execute()
     {
-        this.getSlideViewer().exit();
+        this.getSlideViewer().exit(0);
     }
 }

@@ -32,5 +32,6 @@ public class TextItem extends SlideItem
     @Override
     public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale) {
         return null;
+        // Moet nog worden geimplementeerd
     }
 }
