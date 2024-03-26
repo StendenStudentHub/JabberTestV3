@@ -1,5 +1,6 @@
 package com.nhlstenden.Strategy;
 
+import java.util.Objects;
 import java.util.Vector;
 
 public class Slide
@@ -46,6 +47,22 @@ public class Slide
     public void toggleDrawAllItems()
     {
         this.drawAllItems = !this.drawAllItems;
+    }
+
+    public int getDimension(String dimension)
+    {
+        int finalNumber = 0;
+
+        if(dimension.equalsIgnoreCase("width"))
+        {
+            finalNumber = WIDTH;
+        }
+        else if(dimension.equalsIgnoreCase("height"))
+        {
+            finalNumber = HEIGHT;
+        }
+
+        return finalNumber;
     }
 
     public void append(SlideItem slideItem)

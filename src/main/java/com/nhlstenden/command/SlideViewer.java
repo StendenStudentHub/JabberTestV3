@@ -66,6 +66,7 @@ public class SlideViewer
     public void nextItem()
     {
         Slide currentSlide = presentation.getCurrentSlide();
+
         if(currentSlide.getNumberOfItemsToDraw() < currentSlide.getSize())
         {
             currentSlide.incrementItemsToDraw();
@@ -79,6 +80,7 @@ public class SlideViewer
     public void previousItem()
     {
         Slide currentSlide = presentation.getCurrentSlide();
+
         if(currentSlide.getNumberOfItemsToDraw() > 0 && !currentSlide.isDrawAllItems())
         {
             currentSlide.decrementItemsToDraw();
@@ -104,12 +106,50 @@ public class SlideViewer
 
     public void showAllOrNext()
     {
+        Slide currentSlide = this.presentation.getCurrentSlide();
 
+        if(currentSlide.getNumberOfItemsToDraw() < currentSlide.getSize() - 1)
+        {
+            showAll();
+        }
+        else
+        {
+            nextSlide();
+        }
     }
 
     public void clearItemsOrBack()
     {
+        if(this.presentation.getCurrentSlide().getNumberOfItemsToDraw() > 0)
+        {
+            clearSlide();
+            isDrawAllItemsTrue();
+        }
+        else
+        {
+            currentSlideHigherThanZero();
+        }
+    }
 
+    public void isDrawAllItemsTrue()
+    {
+        if(this.presentation.getCurrentSlide().isDrawAllItems())
+        {
+            prevSlide();
+        }
+    }
+
+    public void currentSlideHigherThanZero()
+    {
+        if(this.presentation.getCurrentSlideNumber() > 0)
+        {
+            prevSlide();
+            showAll();
+        }
+        else
+        {
+            prevSlide();
+        }
     }
 
     public void exit(int status)
@@ -119,27 +159,41 @@ public class SlideViewer
 
     public void setSlideNumber(int slideNumber)
     {
+        this.presentation.setCurrentSlideNumber(slideNumber);
+        Slide currentSlide = this.presentation.getCurrentSlide();
 
+        if(currentSlide.isDrawAllItems())
+        {
+            showAll();
+        }
+        else
+        {
+            clearSlide();
+        }
     }
 
-    public void clearSlide(int number)
+    private void clearSlide()
     {
-
+        this.presentation.getCurrentSlide().setNumberOfItemsToDraw(0);
     }
 
-    public void showAll()
+    private void showAll()
     {
-
+        int itemCount = this.presentation.getCurrentSlide().getSize();
+        this.presentation.getCurrentSlide().setNumberOfItemsToDraw(itemCount);
     }
 
-    public int getIntegerField(String argument)
+    private int getIntegerField(String argument)
     {
-        //This needs to change
+        //Voor nu nog even leeg laten, tot het nodig is.
         return 0;
     }
 
     public void updateView()
     {
-
+        if(this.slideViewerComponent != null)
+        {
+            this.slideViewerComponent.update(this.presentation.getShowTitle(), this.presentation.getCurrentSlide());
+        }
     }
 }
