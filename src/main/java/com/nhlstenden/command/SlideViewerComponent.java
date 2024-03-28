@@ -1,6 +1,7 @@
 package com.nhlstenden.command;
 
 import com.nhlstenden.Strategy.Slide;
+import com.nhlstenden.Strategy.SlideItem;
 
 import javax.swing.*;
 import java.awt.*;
@@ -74,9 +75,28 @@ public class SlideViewerComponent
         graphics.drawString("Slide " + (1 + this.presentation.getCurrentSlideNumber()) + " of " + this.presentation.getSize(), X_POSITION, Y_POSITION);
     }
 
-    public void draw(Graphics graphics, Rectangle area, ImageObserver view)
-    {
-        //Moet nog worden geimplementeerd
+    public void draw(Graphics graphics, Rectangle area, ImageObserver view) {
+        float scale = getScale(area);
+        drawTitle(graphics, area, view, scale);
+        drawSlideItems(graphics, view, scale, area);
+    }
+
+    private int calculateYPosition(int currentY, SlideItem item, Graphics graphics, ImageObserver view, float scale) {
+        return currentY + item.getBoundingBox(graphics, view, scale).height;
+    }
+
+    private void drawTitle(Graphics graphics, Rectangle area, ImageObserver view, float scale) {
+        SlideItem title = slide.getTitle();
+        title.draw(area.x, area.y, scale, graphics, view);
+    }
+
+    private void drawSlideItems(Graphics graphics, ImageObserver view, float scale, Rectangle area) {
+        int yPosition = area.y;
+        for (int number = 0; number < slide.getNumberOfItemsToDraw(); number++) {
+            SlideItem item = slide.getSlideItems().elementAt(number);
+            item.draw(0, yPosition, scale, graphics, view);
+            yPosition = calculateYPosition(yPosition, item, graphics, view, scale);
+        }
     }
 
     private float getScale(Rectangle area)

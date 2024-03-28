@@ -26,6 +26,11 @@ public abstract class SlideItem
         return this.subItems.size();
     }
 
+    public ArrayList<SlideItem> getSubItemsList()
+    {
+        return this.subItems;
+    }
+
     public void setItemStyle(Style style)
     {
         this.itemStyle = style;

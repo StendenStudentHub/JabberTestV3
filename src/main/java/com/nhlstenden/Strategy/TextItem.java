@@ -2,6 +2,7 @@ package com.nhlstenden.Strategy;
 
 import java.awt.*;
 import java.awt.font.TextAttribute;
+import java.awt.font.TextLayout;
 import java.awt.image.ImageObserver;
 import java.text.AttributedString;
 
@@ -32,6 +33,6 @@ public class TextItem extends SlideItem
     @Override
     public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale) {
         return null;
-        // Moet nog worden geimplementeerd
+        //Moet nog worden geimplementeerd
     }
 }

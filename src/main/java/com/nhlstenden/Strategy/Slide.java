@@ -82,13 +82,12 @@ public class Slide
 
     public void append(int level, String message)
     {
-           //moet nog worden geimplementeerd
+        //moet nog worden geimplementeerd
     }
 
     public SlideItem getSlideItem(int number)
     {
-        //Moet nog woren geimplementeerd
-        return null;
+        return (SlideItem) items.elementAt(number);
     }
 
     public Vector<SlideItem> getSlideItems()
