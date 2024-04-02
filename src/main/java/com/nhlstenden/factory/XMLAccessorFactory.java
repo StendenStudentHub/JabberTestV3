@@ -1,22 +1,17 @@
-package Factories;
+package com.nhlstenden.factory;
 
-/**
- * XMLAccessorFactory
- * <p>
- * Concrete factory of the AccesorFactory abstract factory pattern. It makes it
- * possible to read XML data.
- * </p>
- */
-
-public class XMLAccessorFactory extends AccessorFactory {
+public class XMLAccessorFactory extends AccessorFactory
+{
 
 	@Override
-	public Reader CreateReader() {
+	public Reader CreateReader()
+	{
 		return new XMLReader();
 	}
 
 	@Override
-	public Writer CreateWriter() {
+	public Writer CreateWriter()
+	{
 		return new XMLWriter();
 	}
 

@@ -1,19 +1,13 @@
-package Factories;
+package com.nhlstenden.factory;
 
-import model.Slide;
+import com.nhlstenden.strategy.Slide;
 
-/**
- * ItemSlideFactory
- * <p>
- * This is the concrete factory of the abstract SlideFactory pattern. It is used
- * to load a slide based on different slide items.
- * </p>
- */
 
-public class ItemSlideFactory extends SlideFactory {
-
+public class ItemSlideFactory extends SlideFactory
+{
 	@Override
-	public Slide CreateSLide() {
+	public Slide CreateSLide()
+	{
 		return new Slide();
 	}
 

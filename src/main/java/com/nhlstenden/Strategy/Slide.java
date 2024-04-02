@@ -1,4 +1,4 @@
-package com.nhlstenden.Strategy;
+package com.nhlstenden.strategy;
 
 import java.util.Objects;
 import java.util.Vector;

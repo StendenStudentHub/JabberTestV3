@@ -1,19 +1,12 @@
-package Factories;
+package com.nhlstenden.factory;
 
-import model.Presentation;
+import com.nhlstenden.strategy.Presentation;
 
-/**
- * RegularPresentationFactory
- * <p>
- * concrete factory of the abstract presentation factory class. Which is used to
- * generate regular type of presentations.
- * </p>
- */
-
-public class RegularPresentationFactory extends PresentationFactory {
-
+public class RegularPresentationFactory extends PresentationFactory
+{
 	@Override
-	public Presentation CreatePresentation() {
+	public Presentation CreatePresentation()
+	{
 		return new Presentation();
 	}
 

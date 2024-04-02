@@ -1,4 +1,4 @@
-package com.nhlstenden.Strategy;
+package com.nhlstenden.strategy;
 
 public abstract class StyleStrategy
 {

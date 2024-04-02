@@ -1,28 +1,24 @@
-package Factories;
+package com.nhlstenden.factory;
 
-import model.Slide;
+import com.nhlstenden.strategy.Slide;
 
-/**
- * SlideFactory
- * <p>
- * Slide factory is an abstract factory used to create different type of Slide's
- * based on a SlideType.
- * </p>
- */
+import java.util.Objects;
 
-public abstract class SlideFactory {
+public abstract class SlideFactory
+{
 
-	public enum SupportedSlideTypes {
+	public enum SupportedSlideTypes
+	{
 		ITEMSLIDE
 	}
 
-	public static SlideFactory GetFactory(SupportedSlideTypes slideType) {
-		switch (slideType) {
-		case ITEMSLIDE:
-			return new ItemSlideFactory();
-		default:
+	public static SlideFactory GetFactory(SupportedSlideTypes slideType)
+	{
+		if (Objects.requireNonNull(slideType) == SupportedSlideTypes.ITEMSLIDE)
+		{
 			return new ItemSlideFactory();
 		}
+		return new ItemSlideFactory();
 	}
 
 	public abstract Slide CreateSLide();

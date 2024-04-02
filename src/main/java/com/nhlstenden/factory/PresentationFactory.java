@@ -1,28 +1,24 @@
-package Factories;
+package com.nhlstenden.factory;
 
-import model.Presentation;
+import com.nhlstenden.strategy.Presentation;
 
-/**
- * PresentationFactory
- * <p>
- * Abstract factory to create different types of presentation factory based on a
- * specific type.
- * </p>
- */
+import java.util.Objects;
 
-public abstract class PresentationFactory {
+public abstract class PresentationFactory
+{
 
-	public enum SupportedPresentationTypes {
+	public enum SupportedPresentationTypes
+	{
 		REGULARPRESENTATION
 	}
 
-	public static PresentationFactory GetFactory(SupportedPresentationTypes presentationType) {
-		switch (presentationType) {
-		case REGULARPRESENTATION:
-			return new RegularPresentationFactory();
-		default:
+	public static PresentationFactory GetFactory(SupportedPresentationTypes presentationType)
+	{
+		if (Objects.requireNonNull(presentationType) == SupportedPresentationTypes.REGULARPRESENTATION)
+		{
 			return new RegularPresentationFactory();
 		}
+		return new RegularPresentationFactory();
 	}
 
 	public abstract Presentation CreatePresentation();

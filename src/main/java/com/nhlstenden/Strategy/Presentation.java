@@ -1,4 +1,4 @@
-package model;
+package com.nhlstenden.strategy;
 
 import java.util.ArrayList;
 
@@ -19,30 +19,35 @@ import java.util.ArrayList;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-public class Presentation {
+public class Presentation
+{
 	private String showTitle; // de titel van de presentatie
-	private ArrayList<Slide> showList = null; // een ArrayList met de Slides
+	private ArrayList<com.nhlstenden.strategy.Slide> showList = null; // een ArrayList met de Slides
 	private int currentSlideNumber = 0; // het slidenummer van de huidige Slide
 
-	public Presentation() {
-//		slideViewComponent = null;
+	public Presentation()
+	{
 		clear();
 	}
 
-	public int getSize() {
+	public int getSize()
+	{
 		return showList.size();
 	}
 
-	public String getTitle() {
+	public String getTitle()
+	{
 		return showTitle;
 	}
 
-	public void setTitle(String nt) {
+	public void setTitle(String nt)
+	{
 		showTitle = nt;
 	}
 
 	// geef het nummer van de huidige slide
-	public int getSlideNumber() {
+	public int getSlideNumber()
+	{
 		return currentSlideNumber;
 	}
 
@@ -52,26 +57,31 @@ public class Presentation {
 	}
 
 	// Verwijder de presentatie, om klaar te zijn voor de volgende
-	public void clear() {
-		showList = new ArrayList<Slide>();
+	public void clear()
+	{
+		showList = new ArrayList<com.nhlstenden.strategy.Slide>();
 		setSlideNumber(0);
 	}
 
 	// Voeg een slide toe aan de presentatie
-	public void append(Slide slide) {
+	public void append(com.nhlstenden.strategy.Slide slide)
+	{
 		showList.add(slide);
 	}
 
 	// Geef een slide met een bepaald slidenummer
-	public Slide getSlide(int number) {
-		if (number < 0 || number >= getSize()) {
+	public com.nhlstenden.strategy.Slide getSlide(int number)
+	{
+		if (number < 0 || number >= getSize())
+		{
 			return null;
 		}
 		return showList.get(number);
 	}
 
 	// Geef de huidige Slide
-	public Slide getCurrentSlide() {
+	public Slide getCurrentSlide()
+	{
 		return getSlide(currentSlideNumber);
 	}
 

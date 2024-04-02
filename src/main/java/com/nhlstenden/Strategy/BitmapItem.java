@@ -1,4 +1,4 @@
-package com.nhlstenden.Strategy;
+package com.nhlstenden.strategy;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

@@ -1,22 +1,17 @@
-package Factories;
+package com.nhlstenden.factory;
 
-/**
- * DemoAccesorFacotry
- * <p>
- * Concrete factory of the AccesorFactory abstract factory pattern. It makes it
- * possible to read demo data.
- * </p>
- */
-
-public class DemoAccesorFactory extends AccessorFactory {
+public class DemoAccesorFactory extends AccessorFactory
+{
 
 	@Override
-	public Reader CreateReader() {
+	public Reader CreateReader()
+	{
 		return new DemoReader();
 	}
 
 	@Override
-	public Writer CreateWriter() {
+	public Writer CreateWriter()
+	{
 		return new DemoWriter();
 	}
 

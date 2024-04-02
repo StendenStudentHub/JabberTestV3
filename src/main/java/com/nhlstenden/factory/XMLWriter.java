@@ -1,27 +1,18 @@
-package Factories;
+package com.nhlstenden.factory;
+
+import com.nhlstenden.strategy.*;
+
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Vector;
 
-import model.BitmapItem;
-import model.Presentation;
-import model.Slide;
-import model.SlideItem;
-import model.TextItem;
-
-/**
- * XMLWriter
- * <p>
- * This reader is used to write away the current presentation as XML data.
- * </p>
- */
-
-public class XMLWriter extends Writer {
-
+public class XMLWriter extends Writer
+{
 	@Override
-	public void Write(Presentation presentation, String filename) throws IOException {
+	public void Write(Presentation presentation, String filename) throws IOException
+	{
 		PrintWriter out = new PrintWriter(new FileWriter(filename));
 		out.println("<?xml version=\"1.0\"?>");
 		out.println("<!DOCTYPE presentation SYSTEM \"jabberpoint.dtd\">");
@@ -29,22 +20,29 @@ public class XMLWriter extends Writer {
 		out.print("<showtitle>");
 		out.print(presentation.getTitle());
 		out.println("</showtitle>");
-		for (int slideNumber = 0; slideNumber < presentation.getSize(); slideNumber++) {
+		for (int slideNumber = 0; slideNumber < presentation.getSize(); slideNumber++)
+		{
 			Slide slide = presentation.getSlide(slideNumber);
 			out.println("<slide>");
 			out.println("<title>" + slide.getTitle() + "</title>");
 			Vector<SlideItem> slideItems = slide.getSlideItems();
-			for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++) {
+			for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++)
+			{
 				SlideItem slideItem = (SlideItem) slideItems.elementAt(itemNumber);
 				out.print("<item kind=");
-				if (slideItem instanceof TextItem) {
+				if (slideItem instanceof TextItem)
+				{
 					out.print("\"text\" level=\"" + slideItem.getLevel() + "\">");
 					out.print(((TextItem) slideItem).getText());
-				} else {
-					if (slideItem instanceof BitmapItem) {
+				} else
+				{
+					if (slideItem instanceof BitmapItem)
+					{
 						out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
-						out.print(((BitmapItem) slideItem).getName());
-					} else {
+						out.print(((BitmapItem) slideItem).getImageName());
+					}
+					else
+					{
 						System.out.println("Ignoring " + slideItem);
 					}
 				}
@@ -55,5 +53,4 @@ public class XMLWriter extends Writer {
 		out.println("</presentation>");
 		out.close();
 	}
-
 }

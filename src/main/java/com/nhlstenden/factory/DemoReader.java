@@ -1,27 +1,21 @@
-package Factories;
+package com.nhlstenden.factory;
+
+import com.nhlstenden.factory.PresentationFactory.SupportedPresentationTypes;
+import com.nhlstenden.factory.SlideFactory.SupportedSlideTypes;
+import com.nhlstenden.strategy.Presentation;
+import com.nhlstenden.strategy.Slide;
 
 import java.io.IOException;
 
-import Factories.PresentationFactory.SupportedPresentationTypes;
-import Factories.SlideFactory.SupportedSlideTypes;
-import model.Presentation;
-import model.Slide;
-
-/**
- * DemoReader
- * <p>
- * This reader is used to read in some demo presentation data.
- * </p>
- */
-
-public class DemoReader extends Reader {
+public class DemoReader extends Reader
+{
 
 	@Override
-	public Presentation Read(String fileName) throws IOException {
+	public Presentation Read(String fileName) throws IOException
+	{
 		// hard code to REGULARPRESENTATION if we got different types of slides we could
 		// add logic to the factory to support more and swap accordingly.
-		Presentation presentation = PresentationFactory.GetFactory(SupportedPresentationTypes.REGULARPRESENTATION)
-				.CreatePresentation();
+		com.nhlstenden.strategy.Presentation presentation = PresentationFactory.GetFactory(SupportedPresentationTypes.REGULARPRESENTATION).CreatePresentation();
 
 		presentation.setTitle("Demo Presentation");
 		// hard code to ITEMSLIDE if we got different types of slides we could add logic

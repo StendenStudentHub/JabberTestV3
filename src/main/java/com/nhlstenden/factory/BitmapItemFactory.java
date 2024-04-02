@@ -1,20 +1,24 @@
-package Factories;
+package com.nhlstenden.factory;
 
-import model.BitmapItem;
-import model.SlideItem;
+import com.nhlstenden.strategy.BitmapItem;
+import com.nhlstenden.strategy.SlideItem;
 
-/**
- * BitmapitemFactory
- * <p>
- * Concrete factory of the SlideItem Abstract factory. Used to create bitmap items.
- * </p>
- */
+import java.io.IOException;
 
-public class BitmapItemFactory extends SlideItemFactory {
+public class BitmapItemFactory extends SlideItemFactory
+{
 
 	@Override
-	public SlideItem CreateSlideItem(int level, String content) {
-		return new BitmapItem(level, content);
+	public SlideItem CreateSlideItem(int level, String content)
+	{
+		try
+		{
+			return new BitmapItem(level, content);
+		}
+		catch (IOException e)
+		{
+			throw new RuntimeException(e);
+		}
 	}
 
 }
