@@ -1,7 +1,7 @@
 package com.nhlstenden.command;
 
-import com.nhlstenden.Strategy.Slide;
-import com.nhlstenden.Strategy.SlideItem;
+import com.nhlstenden.strategy.Slide;
+import com.nhlstenden.strategy.SlideItem;
 
 import javax.swing.*;
 import java.awt.*;

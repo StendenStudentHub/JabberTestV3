@@ -1,6 +1,6 @@
 package com.nhlstenden.command;
 
-import com.nhlstenden.Strategy.Slide;
+import com.nhlstenden.strategy.Slide;
 
 public class SlideViewer
 {

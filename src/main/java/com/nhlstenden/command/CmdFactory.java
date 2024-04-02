@@ -75,7 +75,7 @@ public class CmdFactory
 
     public Command createToggleItemsCMD()
     {
-        return new CmdToggleAllItems();
+        return new CmdToggleAllItems(slideviewer);
     }
 
     public Command createNullCMD()
