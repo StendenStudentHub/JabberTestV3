@@ -1,8 +1,8 @@
 package com.nhlstenden.command;
 
-public class CmdSave extends Command
+public class CmdNull extends Command
 {
-    public CmdSave(SlideViewer slideViewer)
+    public CmdNull(SlideViewer slideViewer)
     {
         super(slideViewer);
     }
@@ -10,6 +10,6 @@ public class CmdSave extends Command
     @Override
     public void execute()
     {
-        
+        //No actions needed
     }
 }
