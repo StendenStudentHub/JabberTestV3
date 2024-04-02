@@ -3,6 +3,7 @@ package com.nhlstenden.command;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.function.Supplier;
 
 public class MenuController extends MenuBar
 {
@@ -30,34 +31,73 @@ public class MenuController extends MenuBar
     private SlideViewer slideViewer;
     private CmdFactory cmdFactory;
     private MenuItem menuItem;
-    private Menu fileMenu = new Menu(FILE);
 
-    public MenuController(Frame frame, SlideViewer slideViewer, CmdFactory cmdFactory)
+    public MenuController(Frame frame, SlideViewer slv, CmdFactory cmdFactory)
     {
-        this.frame = frame;
-        this.slideViewer = slideViewer;
         this.cmdFactory = cmdFactory;
+
+        // FILE menu
+        Menu fileMenu = createFileMenu();
+        add(fileMenu);
+
+        // VIEW menu
+        Menu viewMenu = createViewMenu();
+        add(viewMenu);
+
+        // HELP menu
+        Menu helpMenu = createHelpMenu();
+        setHelpMenu(helpMenu);
     }
 
-    private void makeFileMenu()
+    private Menu createFileMenu()
     {
-        fileMenu.add(menuItem = createMenuItem(OPEN));
-        menuItem.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent actionEvent)
-            {
-                CommandInvoker.executeCommand(cmdFactory.createOpenCMD());
+        Menu fileMenu = new Menu(FILE);
+        fileMenu.add(createMenuItem(OPEN, cmdFactory::createOpenCMD));
+        fileMenu.add(createMenuItem(NEW, cmdFactory::createNewCMD));
+        fileMenu.add(createMenuItem(SAVE, cmdFactory::createSaveCMD));
+        fileMenu.addSeparator();
+        fileMenu.add(createMenuItem(EXIT, cmdFactory::createExitCMD));
+
+        return fileMenu;
+    }
+
+    private Menu createViewMenu()
+    {
+        Menu viewMenu = new Menu(VIEW);
+        viewMenu.add(createMenuItem(NEXT, cmdFactory::createNextSlideCMD));
+        viewMenu.add(createMenuItem(PREVIOUS, cmdFactory::createPreviousSlideCMD));
+        viewMenu.add(createMenuItem(GO_TO, cmdFactory::createSlideByNumber));
+        viewMenu.add(createMenuItem(NEXT_ITEM, cmdFactory::createNextItemCMD));
+        viewMenu.add(createMenuItem(PREVIOUS_ITEM, cmdFactory::createPreviousItemCMD));
+        viewMenu.add(createMenuItem(ALL_ITEM, cmdFactory::createShowAllOrNextCMD));
+        viewMenu.add(createMenuItem(CLEAR_ITEMS, cmdFactory::createClearItemsOrBackCMD));
+        viewMenu.add(createMenuItem(TOGGLE, cmdFactory::createToggleItemsCMD));
+
+        return viewMenu;
+    }
+
+    private Menu createHelpMenu()
+    {
+        Menu helpMenu = new Menu(HELP);
+        helpMenu.add(createMenuItem(ABOUT, cmdFactory::createShowAboutBoxCMD));
+
+        return helpMenu;
+    }
+
+    private MenuItem createMenuItem(String label)
+    {
+        return new MenuItem(label);
+    }
+
+    private MenuItem createMenuItem(String label, Supplier<Command> commandSupplier)
+    {
+        MenuItem menuItem = createMenuItem(label);
+        menuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent) {
+                CommandInvoker.executeCommand(commandSupplier.get());
             }
         });
-    }
 
-    private void makeNewMenu()
-    {
-
-    }
-
-    public MenuItem createMenuItem(String name)
-    {
-        return new MenuItem(name, new MenuShortcut(name.charAt(0)));
+        return menuItem;
     }
 }
