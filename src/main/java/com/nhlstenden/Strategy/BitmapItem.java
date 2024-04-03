@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.Buffer;
 
-public class BitmapItem extends SlideItem
+public class BitmapItem extends Slideitem
 {
     private String imageName;
     private BufferedImage bufferedImage;
@@ -46,6 +46,6 @@ public class BitmapItem extends SlideItem
     public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale)
     {
         //Moet nog worden geimplementeerd
-        return null;
+       return null;
     }
 }

@@ -60,7 +60,7 @@ public class CmdFactory
 
     public Command createSaveCMD()
     {
-        return new CmdSave(slideviewer);
+        return new CmdSave(slideviewer, parent, );
     }
 
     public Command createNewCMD()
