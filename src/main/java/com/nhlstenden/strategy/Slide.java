@@ -81,7 +81,7 @@ public class Slide
 
     public void append(int level, String message)
     {
-        //moet nog worden geimplementeerd
+
     }
 
     public SlideItem getSlideItem(int number)
