@@ -11,6 +11,10 @@ public class SlideViewer
         this.presentation = presentation;
     }
 
+    public SlideViewer(com.nhlstenden.strategy.Presentation presentation)
+    {
+    }
+
     public Presentation getPresentation()
     {
         return this.presentation;

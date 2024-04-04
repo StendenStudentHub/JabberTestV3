@@ -1,13 +1,11 @@
+package com.nhlstenden;
 
-import javax.swing.JOptionPane;
+import com.nhlstenden.command.SlideViewer;
+import com.nhlstenden.factory.AccessorFactory;
+import com.nhlstenden.strategy.Presentation;
 
-import Factories.AccessorFactory;
-import controller.SlideViewer;
-
+import javax.swing.*;
 import java.io.IOException;
-
-import view.SlideViewerFrame;
-import model.Presentation;
 
 /**
  * JabberPoint Main Programma
