@@ -1,5 +1,7 @@
 package com.nhlstenden.strategy;
 
+import com.nhlstenden.factory.SlideItemFactory;
+
 import java.util.Vector;
 
 public class Slide
@@ -81,7 +83,7 @@ public class Slide
 
     public void append(int level, String message)
     {
-
+        append(SlideItemFactory.GetSlideItemFactory("text").CreateSlideItem(level, message));
     }
 
     public SlideItem getSlideItem(int number)
