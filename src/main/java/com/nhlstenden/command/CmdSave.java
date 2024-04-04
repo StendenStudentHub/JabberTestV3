@@ -28,7 +28,7 @@ public class CmdSave extends Command
 
         try
         {
-            writer.Write(presentation, SAVE_FILE);
+            writer.Write(this.presentation, SAVE_FILE);
         } catch (IOException exception)
         {
             JOptionPane.showMessageDialog(parent, IO_EXCEPTION + exception, SAVE_ERROR, JOptionPane.ERROR_MESSAGE);
