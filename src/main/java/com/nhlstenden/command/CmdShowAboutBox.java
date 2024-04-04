@@ -1,6 +1,6 @@
 package com.nhlstenden.command;
 
-import com.nhlstenden.Facade.AboutBox;
+import com.nhlstenden.facade.AboutBox;
 
 import java.awt.*;
 

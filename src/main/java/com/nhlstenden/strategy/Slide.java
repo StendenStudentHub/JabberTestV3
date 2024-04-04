@@ -1,6 +1,5 @@
 package com.nhlstenden.strategy;
 
-import java.util.Objects;
 import java.util.Vector;
 
 public class Slide

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Presentation
 {
 	private String showTitle;
-	private ArrayList<com.nhlstenden.strategy.Slide> showList = null;
+	private ArrayList<Slide> showList = null;
 	private int currentSlideNumber = 0;
 
 	public Presentation()
@@ -49,7 +49,7 @@ public class Presentation
 
 	public void clear()
 	{
-		showList = new ArrayList<>();
+		showList = new ArrayList<Slide>();
 		setSlideNumber(0);
 	}
 	public void append(com.nhlstenden.strategy.Slide slide)
@@ -57,7 +57,7 @@ public class Presentation
 		showList.add(slide);
 	}
 
-	public com.nhlstenden.strategy.Slide getSlide(int number)
+	public Slide getSlide(int number)
 	{
 		if (number < 0 || number >= getSize())
 		{

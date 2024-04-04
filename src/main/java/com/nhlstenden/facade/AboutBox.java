@@ -1,4 +1,4 @@
-package com.nhlstenden.Facade;
+package com.nhlstenden.facade;
 
 import javax.swing.*;
 import java.awt.*;

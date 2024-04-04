@@ -1,5 +1,6 @@
 package com.nhlstenden.strategy;
 
+import javax.swing.text.Style;
 import java.awt.*;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
