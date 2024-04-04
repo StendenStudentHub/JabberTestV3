@@ -18,14 +18,14 @@ public class TextItem extends SlideItem
         this.text = title;
     }
 
-    public String getText()
+    public String getTitle()
     {
         return this.text;
     }
 
     public AttributedString getAttributedString(float scale)
     {
-        AttributedString attributedString = new AttributedString(getText());
+        AttributedString attributedString = new AttributedString(getTitle());
         //attributedString.addAttribute(TextAttribute.FONT, itemStyle.getFont(scale), 0, text.length());
         return attributedString;
     }
