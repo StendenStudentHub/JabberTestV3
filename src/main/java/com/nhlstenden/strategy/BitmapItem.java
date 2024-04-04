@@ -47,6 +47,6 @@ public class BitmapItem extends SlideItem
     public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale)
     {
         //Moet nog worden geimplementeerd
-       return null;
+        return null;
     }
 }

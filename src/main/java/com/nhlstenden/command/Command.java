@@ -1,5 +1,7 @@
 package com.nhlstenden.command;
 
+import java.io.IOException;
+
 public abstract class Command
 {
     private SlideViewer slideViewer;
@@ -19,6 +21,6 @@ public abstract class Command
         this.slideViewer = slideviewer;
     }
 
-    public abstract void execute();
+    public abstract void execute() throws IOException;
 
 }

@@ -55,12 +55,12 @@ public class CmdFactory
 
     public Command createOpenCMD()
     {
-        return new CmdOpen(slideviewer);
+        return new CmdOpen(slideviewer, parent);
     }
 
     public Command createSaveCMD()
     {
-        return new CmdSave(slideviewer, parent, );
+        return new CmdSave(slideviewer, parent, slideviewer.getPresentation());
     }
 
     public Command createNewCMD()
@@ -70,7 +70,7 @@ public class CmdFactory
 
     public Command createShowAboutBoxCMD()
     {
-        return new CmdShowAboutBox(slideviewer);
+        return new CmdShowAboutBox(slideviewer, parent);
     }
 
     public Command createToggleItemsCMD()

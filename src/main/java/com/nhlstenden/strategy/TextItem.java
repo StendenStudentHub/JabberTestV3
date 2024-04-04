@@ -2,11 +2,10 @@ package com.nhlstenden.strategy;
 
 import java.awt.*;
 import java.awt.font.TextAttribute;
-import java.awt.font.TextLayout;
 import java.awt.image.ImageObserver;
 import java.text.AttributedString;
 
-public class TextItem extends SlideItem
+public class TextItem extends com.nhlstenden.strategy.SlideItem
 {
     private String text;
     private int level;
@@ -26,7 +25,7 @@ public class TextItem extends SlideItem
     public AttributedString getAttributedString(float scale)
     {
         AttributedString attributedString = new AttributedString(getTitle());
-        //attributedString.addAttribute(TextAttribute.FONT, itemStyle.getFont(scale), 0, text.length());
+        attributedString.addAttribute(TextAttribute.FONT, itemStyle.getFont(scale), 0, text.length());
         return attributedString;
     }
 

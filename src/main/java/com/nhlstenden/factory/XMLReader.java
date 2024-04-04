@@ -39,7 +39,7 @@ public class XMLReader extends Reader {
 	protected static final String NFE = "Number Format Exception";
 
 	@Override
-	public Presentation Read(String fileName) throws IOException
+	public com.nhlstenden.command.Presentation Read(String fileName) throws IOException
 	{
 		int slideNumber, itemNumber, max = 0, maxItems = 0;
 		// hard code to REGULARPRESENTATION if we got different types of slides we could

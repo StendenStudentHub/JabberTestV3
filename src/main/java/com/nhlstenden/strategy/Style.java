@@ -1,7 +1,6 @@
 package com.nhlstenden.strategy;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class Style
 {
