@@ -47,8 +47,9 @@ public class BitmapItem extends SlideItem
     @Override
     public void draw(int x, int y, float scale, Graphics graphics, MyStyle style, ImageObserver imageObserver)
     {
-        int width = x + (int) (style.getIndent * scale);
-        int height = y + (int) (style.getLeading * scale);
+
+        int width = x + (int) (style.getIndent()* scale);
+        int height = y + (int) (style.getLeading() * scale);
         graphics.drawImage(bufferedImage, width, height,(int) (bufferedImage.getWidth(imageObserver)*scale),
                 (int) (bufferedImage.getHeight(imageObserver)*scale), imageObserver);
     }
