@@ -25,6 +25,11 @@ public class Style
         return font.deriveFont(this.fontSize * scale);
     }
 
+    public Font getFont(float scale)
+    {
+        return font.deriveFont(fontSize * scale);
+    }
+
     public void setFontSize(int fontSize)
     {
         this.fontSize = fontSize;

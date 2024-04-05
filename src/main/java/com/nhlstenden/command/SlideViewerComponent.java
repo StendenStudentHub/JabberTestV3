@@ -90,9 +90,11 @@ public class SlideViewerComponent
         title.draw(area.x, area.y, scale, graphics, view);
     }
 
-    private void drawSlideItems(Graphics graphics, ImageObserver view, float scale, Rectangle area) {
+    private void drawSlideItems(Graphics graphics, ImageObserver view, float scale, Rectangle area)
+    {
         int yPosition = area.y;
-        for (int number = 0; number < slide.getNumberOfItemsToDraw(); number++) {
+        for (int number = 0; number < slide.getNumberOfItemsToDraw(); number++)
+        {
             SlideItem item = slide.getSlideItems().elementAt(number);
             item.draw(0, yPosition, scale, graphics, view);
             yPosition = calculateYPosition(yPosition, item, graphics, view, scale);

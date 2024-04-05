@@ -2,6 +2,7 @@ package com.nhlstenden.factory;
 
 import com.nhlstenden.factory.PresentationFactory.SupportedPresentationTypes;
 import com.nhlstenden.factory.SlideFactory.SupportedSlideTypes;
+import com.nhlstenden.strategy.Presentation;
 import com.nhlstenden.strategy.Slide;
 
 import java.io.IOException;
@@ -10,7 +11,7 @@ public class DemoReader extends Reader
 {
 
 	@Override
-	public com.nhlstenden.command.Presentation Read(String fileName) throws IOException
+	public Presentation Read(String fileName) throws IOException
 	{
 		// hard code to REGULARPRESENTATION if we got different types of slides we could
 		// add logic to the factory to support more and swap accordingly.

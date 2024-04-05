@@ -13,7 +13,8 @@ public class KeyController extends KeyAdapter
 
     public void keyPressed(KeyEvent keyEvent)
     {
-        Command selectedCommand = switch (keyEvent.getKeyCode()) {
+        Command selectedCommand = switch (keyEvent.getKeyCode())
+        {
             case KeyEvent.VK_PAGE_DOWN, KeyEvent.VK_ENTER ->
                 // unconditional next slide
                     this.cmdFactory.createNextSlideCMD();
@@ -43,6 +44,6 @@ public class KeyController extends KeyAdapter
                     this.cmdFactory.createNullCMD();
         };
 
-            CommandInvoker.executeCommand(selectedCommand);
+        CommandInvoker.executeCommand(selectedCommand);
     }
 }

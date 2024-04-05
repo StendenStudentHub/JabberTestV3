@@ -26,7 +26,8 @@ public class CmdOpen extends Command
         {
             getSlideViewer().setPresentation(reader.Read(TEST_FILE));
             getSlideViewer().setSlideNumber(0);
-        } catch (IOException exception)
+        }
+        catch (IOException exception)
         {
             JOptionPane.showMessageDialog(parent, IO_EXCEPTION + exception, LOADER_ERROR, JOptionPane.ERROR_MESSAGE);
         }

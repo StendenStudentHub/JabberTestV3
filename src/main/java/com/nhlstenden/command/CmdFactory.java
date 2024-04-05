@@ -30,7 +30,6 @@ public class CmdFactory
     public Command createPreviousItemCMD()
     {
         return new CmdPreviousItem(slideviewer);
-
     }
 
     public Command createShowAllOrNextCMD()

@@ -92,8 +92,10 @@ public class MenuController extends MenuBar
     private MenuItem createMenuItem(String label, Supplier<Command> commandSupplier)
     {
         MenuItem menuItem = createMenuItem(label);
-        menuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent actionEvent) {
+        menuItem.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent actionEvent)
+            {
                 CommandInvoker.executeCommand(commandSupplier.get());
             }
         });
