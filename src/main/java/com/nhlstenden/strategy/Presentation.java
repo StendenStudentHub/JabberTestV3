@@ -20,41 +20,43 @@ public class Presentation
 
 	public Presentation()
 	{
-		clear();
+		this.showTitle = "";
+		this.currentSlideNumber = 0;
+		this.showList = new ArrayList<Slide>();
 	}
 
 	public int getSize()
 	{
-		return showList.size();
+		return this.showList.size();
 	}
 
 	public String getTitle()
 	{
-		return showTitle;
+		return this.showTitle;
 	}
 
-	public void setTitle(String nt)
+	public void setTitle(String newTitle)
 	{
-		showTitle = nt;
+		this.showTitle = newTitle;
 	}
 
 	public int getSlideNumber()
 	{
-		return currentSlideNumber;
+		return this.currentSlideNumber;
 	}
 
 	public void setSlideNumber(int number) {
-		currentSlideNumber = number;
+		this.currentSlideNumber = number;
 	}
 
 	public void clear()
 	{
-		showList = new ArrayList<Slide>();
+		this.showList = new ArrayList<Slide>();
 		setSlideNumber(0);
 	}
 	public void append(com.nhlstenden.strategy.Slide slide)
 	{
-		showList.add(slide);
+		this.showList.add(slide);
 	}
 
 	public Slide getSlide(int number)
@@ -63,7 +65,7 @@ public class Presentation
 		{
 			return null;
 		}
-		return showList.get(number);
+		return this.showList.get(number);
 	}
 
 	public Slide getCurrentSlide()
