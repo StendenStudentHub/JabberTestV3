@@ -50,8 +50,5 @@ public abstract class SlideItem
 
     public abstract Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale);
 
-    public void draw(int x, int y, float scale, Graphics graphics, ImageObserver observer)
-    {
-        //Moet nog worden geimplementeerd
-    }
+    public abstract void draw(int x, int y, float scale, Graphics g, Style style, ImageObserver observer);
 }

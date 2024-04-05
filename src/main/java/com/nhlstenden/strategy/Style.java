@@ -6,11 +6,11 @@ public class Style
 {
     private static final String FONT_NAME = "Helvetica";
     private int indent;
-    private int fontSize;
+    private static int fontSize;
     private int leading;
     private int points;
     private Color color;
-    private Font font;
+    private static Font font;
 
     public Style(int indent, Color color, int points,  int leading)
     {
@@ -22,17 +22,17 @@ public class Style
 
     public Font getfont(float scale)
     {
-        return font.deriveFont(this.fontSize * scale);
+        return font.deriveFont(fontSize * scale);
     }
 
-    public Font getFont(float scale)
+    public static Font getFont(float scale)
     {
         return font.deriveFont(fontSize * scale);
     }
 
     public void setFontSize(int fontSize)
     {
-        this.fontSize = fontSize;
+        Style.fontSize = fontSize;
     }
 
     public int getIndent()
@@ -52,6 +52,6 @@ public class Style
 
     public String toString()
     {
-        return "{" + this.indent + "," + this.color + ", " + this.fontSize + " on " + this.leading + "}";
+        return "{" + this.indent + "," + this.color + ", " + fontSize + " on " + this.leading + "}";
     }
 }

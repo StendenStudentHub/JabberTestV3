@@ -2,11 +2,14 @@ package com.nhlstenden.strategy;
 
 import java.awt.*;
 
-public class StyleDefault extends StyleStrategy {
+public class StyleDefault extends StyleStrategy
+{
     private Style[] styles;
 
-    private javax.swing.text.Style getStyle(int level) {
-        if (level >= styles.length) {
+    private javax.swing.text.Style getStyle(int level)
+    {
+        if (level >= styles.length)
+        {
             level = styles.length - 1;
         }
 
