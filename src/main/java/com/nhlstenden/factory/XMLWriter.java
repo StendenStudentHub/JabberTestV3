@@ -10,10 +10,6 @@ import java.util.Vector;
 
 public class XMLWriter extends Writer
 {
-	@Override
-	public void Write(com.nhlstenden.command.Presentation presentation, String filename) throws IOException
-	{
-	}
 
 	@Override
 	public void Write(Presentation presentation, String filename) throws IOException
@@ -39,7 +35,8 @@ public class XMLWriter extends Writer
 				{
 					out.print("\"text\" level=\"" + slideItem.getLevel() + "\">");
 					out.print(((TextItem) slideItem).getText());
-				} else
+				}
+				else
 				{
 					if (slideItem instanceof BitmapItem)
 					{

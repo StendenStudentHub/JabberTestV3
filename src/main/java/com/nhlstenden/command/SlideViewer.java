@@ -1,18 +1,16 @@
 package com.nhlstenden.command;
 
 import com.nhlstenden.strategy.Slide;
+import com.nhlstenden.strategy.Presentation;
 
 public class SlideViewer
 {
     private Presentation presentation;
     private SlideViewerComponent slideViewerComponent;
-    public SlideViewer(Presentation presentation)
-    {
-        this.presentation = presentation;
-    }
 
     public SlideViewer(com.nhlstenden.strategy.Presentation presentation)
     {
+        this.presentation = presentation;
     }
 
     public Presentation getPresentation()
@@ -34,17 +32,17 @@ public class SlideViewer
 
     public void prevSlide()
     {
-        if(presentation.getCurrentSlideNumber() > 0)
+        if(presentation.getSlideNumber() > 0)
         {
-            setSlideNumber(presentation.getCurrentSlideNumber() -1);
+            setSlideNumber(presentation.getSlideNumber() -1);
         }
     }
 
     public void nextSlide()
     {
-        if(presentation.getCurrentSlideNumber() > (presentation.getSize()) - 1)
+        if(presentation.getSlideNumber() > (presentation.getSize()) - 1)
         {
-            setSlideNumber(presentation.getCurrentSlideNumber() + 1);
+            setSlideNumber(presentation.getSlideNumber() + 1);
         }
     }
 
@@ -97,7 +95,7 @@ public class SlideViewer
 
     public void isSlideNumberGreaterThanZero()
     {
-        if(presentation.getCurrentSlideNumber() > 0)
+        if(presentation.getSlideNumber() > 0)
         {
             prevSlide();
             showAll();
@@ -145,7 +143,7 @@ public class SlideViewer
 
     public void currentSlideHigherThanZero()
     {
-        if(this.presentation.getCurrentSlideNumber() > 0)
+        if(this.presentation.getSlideNumber() > 0)
         {
             prevSlide();
             showAll();
@@ -197,7 +195,7 @@ public class SlideViewer
     {
         if(this.slideViewerComponent != null)
         {
-            this.slideViewerComponent.update(this.presentation.getShowTitle(), this.presentation.getCurrentSlide());
+            this.slideViewerComponent.update(this.presentation.getTitle(), this.presentation.getCurrentSlide());
         }
     }
 }

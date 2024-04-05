@@ -44,7 +44,7 @@ public class XMLReader extends Reader {
 		int slideNumber, itemNumber, max = 0, maxItems = 0;
 		// hard code to REGULARPRESENTATION if we got different types of slides we could
 		// add logic to the factory to support more and swap accordingly.
-		com.nhlstenden.command.Presentation presentation = PresentationFactory.GetFactory(SupportedPresentationTypes.REGULARPRESENTATION)
+		com.nhlstenden.strategy.Presentation presentation = PresentationFactory.GetFactory(SupportedPresentationTypes.REGULARPRESENTATION)
 				.CreatePresentation();
 		try
 		{

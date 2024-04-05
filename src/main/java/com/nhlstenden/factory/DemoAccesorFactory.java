@@ -1,6 +1,6 @@
 package com.nhlstenden.factory;
 
-import com.nhlstenden.command.Presentation;
+import com.nhlstenden.strategy.Presentation;
 
 import java.io.IOException;
 
@@ -16,13 +16,7 @@ public class DemoAccesorFactory extends AccessorFactory
 	@Override
 	public Writer CreateWriter()
 	{
-		return new DemoWriter()
-		{
-			@Override
-			public void Write(Presentation presentation, String filename) throws IOException
-			{
-			}
-		};
+		return new DemoWriter();
 	}
 
 }

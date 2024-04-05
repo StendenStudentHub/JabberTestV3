@@ -2,6 +2,7 @@ package com.nhlstenden.command;
 
 import com.nhlstenden.factory.AccessorFactory;
 import com.nhlstenden.factory.Writer;
+import com.nhlstenden.strategy.Presentation;
 
 import javax.swing.*;
 import java.awt.*;

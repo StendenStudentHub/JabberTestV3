@@ -71,4 +71,8 @@ public class Presentation
 		return getSlide(currentSlideNumber);
 	}
 
+	public void setCurrentSlideNumber(int currentSlideNumber)
+	{
+		this.currentSlideNumber = currentSlideNumber;
+	}
 }

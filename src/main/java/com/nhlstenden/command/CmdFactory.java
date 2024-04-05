@@ -1,5 +1,6 @@
 package com.nhlstenden.command;
 
+import com.nhlstenden.strategy.Presentation;
 import java.awt.*;
 
 public class CmdFactory
@@ -59,7 +60,7 @@ public class CmdFactory
 
     public Command createSaveCMD()
     {
-        return new CmdSave(slideviewer, parent, slideviewer.getPresentation());
+        return new CmdSave(slideviewer, parent, new Presentation());
     }
 
     public Command createNewCMD()

@@ -3,6 +3,7 @@ package com.nhlstenden.command;
 import com.nhlstenden.strategy.Slide;
 import com.nhlstenden.strategy.SlideItem;
 import com.nhlstenden.strategy.Style;
+import com.nhlstenden.strategy.Presentation;
 
 import javax.swing.*;
 import java.awt.*;
@@ -61,7 +62,7 @@ public class SlideViewerComponent
         graphics.setColor(BACKGROUND_COLOR);
         graphics.fillRect(0, 0,  this.slide.getDimension("width"), this.slide.getDimension("height"));
 
-        if(this.presentation.getCurrentSlideNumber() > 0 || this.slide != null)
+        if(this.presentation.getSlideNumber() > 0 || this.slide != null)
         {
             paintPartOfComponent(graphics);
             Rectangle area = new Rectangle(0, Y_POSITION, this.slide.getDimension("width"), (this.slide.getDimension("height") - Y_POSITION));
@@ -73,7 +74,7 @@ public class SlideViewerComponent
     {
         graphics.setFont(this.labelFont);
         graphics.setColor(FONT_COLOR);
-        graphics.drawString("Slide " + (1 + this.presentation.getCurrentSlideNumber()) + " of " + this.presentation.getSize(), X_POSITION, Y_POSITION);
+        graphics.drawString("Slide " + (1 + this.presentation.getSlideNumber()) + " of " + this.presentation.getSize(), X_POSITION, Y_POSITION);
     }
 
     public void draw(Graphics graphics, Rectangle area, ImageObserver view, Style style)

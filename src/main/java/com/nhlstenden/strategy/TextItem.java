@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class TextItem extends com.nhlstenden.strategy.SlideItem
+public class TextItem extends SlideItem
 {
     private String text;
     private int level;
@@ -35,8 +35,7 @@ public class TextItem extends com.nhlstenden.strategy.SlideItem
 
         return attributedString;
     }
-
-    @Override
+    
     public void draw(int x, int y, float scale, Graphics graphics, Style myStyle, ImageObserver imageObserver)
     {
         if (text == null || text.length() == 0)
