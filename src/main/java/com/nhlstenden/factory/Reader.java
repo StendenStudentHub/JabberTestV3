@@ -1,6 +1,6 @@
 package com.nhlstenden.factory;
 
-import com.nhlstenden.strategy.Presentation;
+import com.nhlstenden.command.Presentation;
 
 import java.io.IOException;
 

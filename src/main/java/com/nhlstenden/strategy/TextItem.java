@@ -38,22 +38,24 @@ public class TextItem extends com.nhlstenden.strategy.SlideItem
     @Override
     public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale)
     {
-
+        // Implement your logic here
+        return null;
     }
 
     @Override
-    public void draw(int x, int y, float scale, Graphics g, javax.swing.text.Style style, ImageObserver observer) {
-
+    public void draw(int x, int y, float scale, Graphics g, javax.swing.text.Style style, ImageObserver observer)
+    {
+        // Implement your logic here
     }
 
-    public List<TextLayout> getLayouts(Graphics graphics, float scale)
+    public List<TextLayout> getLayouts(Graphics graphics, float scale, Style mystyle)
     {
         List<TextLayout> layouts = new ArrayList<TextLayout>();
         AttributedString attributedString = getAttributedString(scale);
         Graphics2D graphics2D = (Graphics2D) graphics;
         FontRenderContext fontRenderContext = graphics2D.getFontRenderContext();
         LineBreakMeasurer measurer = new LineBreakMeasurer(attributedString.getIterator(), fontRenderContext);
-        float wrappingWidth = (Slide.WIDTH - Style.indent) * scale;
+        float wrappingWidth = (Slide.WIDTH - mystyle.getIndent()) * scale;
         while (measurer.getPosition() < getText().length())
         {
             TextLayout layout = measurer.nextLayout(wrappingWidth);
@@ -62,5 +64,4 @@ public class TextItem extends com.nhlstenden.strategy.SlideItem
 
         return layouts;
     }
-
 }

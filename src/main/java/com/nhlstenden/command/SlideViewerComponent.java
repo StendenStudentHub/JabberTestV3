@@ -2,6 +2,7 @@ package com.nhlstenden.command;
 
 import com.nhlstenden.strategy.Slide;
 import com.nhlstenden.strategy.SlideItem;
+import com.nhlstenden.strategy.Style;
 
 import javax.swing.*;
 import java.awt.*;
@@ -87,7 +88,7 @@ public class SlideViewerComponent
 
     private void drawTitle(Graphics graphics, Rectangle area, ImageObserver view, float scale) {
         SlideItem title = slide.getTitle();
-        title.draw(area.x, area.y, scale, graphics, view, );
+        title.draw(area.x, area.y, scale, graphics, style);
     }
 
     private void drawSlideItems(Graphics graphics, ImageObserver view, float scale, Rectangle area)
