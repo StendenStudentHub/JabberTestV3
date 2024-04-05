@@ -41,6 +41,11 @@ public class TextItem extends com.nhlstenden.strategy.SlideItem
 
     }
 
+    @Override
+    public void draw(int x, int y, float scale, Graphics g, javax.swing.text.Style style, ImageObserver observer) {
+
+    }
+
     public List<TextLayout> getLayouts(Graphics graphics, float scale)
     {
         List<TextLayout> layouts = new ArrayList<TextLayout>();
@@ -48,7 +53,7 @@ public class TextItem extends com.nhlstenden.strategy.SlideItem
         Graphics2D graphics2D = (Graphics2D) graphics;
         FontRenderContext fontRenderContext = graphics2D.getFontRenderContext();
         LineBreakMeasurer measurer = new LineBreakMeasurer(attributedString.getIterator(), fontRenderContext);
-        float wrappingWidth = (Slide.WIDTH - itemStyle.indent) * scale;
+        float wrappingWidth = (Slide.WIDTH - Style.indent) * scale;
         while (measurer.getPosition() < getText().length())
         {
             TextLayout layout = measurer.nextLayout(wrappingWidth);
