@@ -45,10 +45,10 @@ public class BitmapItem extends SlideItem
     }
 
     @Override
-    public void draw(int x, int y, float scale, Graphics graphics, MyStyle Style, ImageObserver imageObserver)
+    public void draw(int x, int y, float scale, Graphics graphics, MyStyle style, ImageObserver imageObserver)
     {
-        int width = x + (int) (MyStyle.Indent * scale);
-        int height = y + (int) (MyStyle.Leading * scale);
+        int width = x + (int) (style.getIndent()* scale);
+        int height = y + (int) (style.getLeading() * scale);
         graphics.drawImage(bufferedImage, width, height,(int) (bufferedImage.getWidth(imageObserver)*scale),
                 (int) (bufferedImage.getHeight(imageObserver)*scale), imageObserver);
     }
