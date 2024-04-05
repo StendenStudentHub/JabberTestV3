@@ -57,6 +57,7 @@ public class TextItem extends com.nhlstenden.strategy.SlideItem
             pen.y += layout.getDescent();
         }
     }
+    }
 
     public List<TextLayout> getLayouts(Graphics graphics, float scale, Style mystyle)
     {
@@ -80,5 +81,4 @@ public class TextItem extends com.nhlstenden.strategy.SlideItem
     {
         return null;
     }
-
 }
