@@ -5,7 +5,7 @@ import com.nhlstenden.strategy.Presentation;
 import java.io.IOException;
 
 
-public class DemoWriter extends Writer
+public abstract class DemoWriter extends Writer
 {
 
 	@Override

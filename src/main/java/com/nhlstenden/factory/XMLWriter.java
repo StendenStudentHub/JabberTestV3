@@ -11,6 +11,11 @@ import java.util.Vector;
 public class XMLWriter extends Writer
 {
 	@Override
+	public void Write(com.nhlstenden.command.Presentation presentation, String filename) throws IOException
+	{
+	}
+
+	@Override
 	public void Write(Presentation presentation, String filename) throws IOException
 	{
 		PrintWriter out = new PrintWriter(new FileWriter(filename));

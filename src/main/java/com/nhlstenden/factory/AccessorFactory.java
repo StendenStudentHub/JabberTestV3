@@ -7,7 +7,8 @@ public abstract class AccessorFactory
 		// check if we provided a file extension if not we just assume its the demo
 		String fileExtension = fileName.contains(".") ? fileName.split("\\.")[1] : "";
 
-		if (fileExtension.equals("xml")) {
+		if (fileExtension.equals("xml"))
+		{
 			return new XMLAccessorFactory();
 		}
 		return new DemoAccesorFactory();
