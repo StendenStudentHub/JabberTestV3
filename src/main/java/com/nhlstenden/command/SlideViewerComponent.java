@@ -57,7 +57,7 @@ public class SlideViewerComponent
         }
     }
 
-    public void paintComponent(Graphics graphics)
+    public void paintComponent(Graphics graphics, MyStyle style)
     {
         graphics.setColor(BACKGROUND_COLOR);
         graphics.fillRect(0, 0,  this.slide.getDimension("width"), this.slide.getDimension("height"));
@@ -66,7 +66,7 @@ public class SlideViewerComponent
         {
             paintPartOfComponent(graphics);
             Rectangle area = new Rectangle(0, Y_POSITION, this.slide.getDimension("width"), (this.slide.getDimension("height") - Y_POSITION));
-            draw(graphics, area, (ImageObserver) this,);
+            draw(graphics, area, (ImageObserver) this, style);
         }
     }
 
