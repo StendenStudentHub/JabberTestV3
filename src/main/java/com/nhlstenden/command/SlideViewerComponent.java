@@ -2,7 +2,7 @@ package com.nhlstenden.command;
 
 import com.nhlstenden.strategy.Slide;
 import com.nhlstenden.strategy.SlideItem;
-import com.nhlstenden.strategy.Style;
+import com.nhlstenden.strategy.MyStyle;
 import com.nhlstenden.strategy.Presentation;
 
 import javax.swing.*;
@@ -77,11 +77,11 @@ public class SlideViewerComponent
         graphics.drawString("Slide " + (1 + this.presentation.getSlideNumber()) + " of " + this.presentation.getSize(), X_POSITION, Y_POSITION);
     }
 
-    public void draw(Graphics graphics, Rectangle area, ImageObserver view, Style style)
+    public void draw(Graphics graphics, Rectangle area, ImageObserver view, MyStyle myStyle)
     {
         float scale = getScale(area);
-        drawTitle(graphics, area, view, scale, style);
-        drawSlideItems(graphics, style, view, scale, area);
+        drawTitle(graphics, area, myStyle, view, scale);
+        drawSlideItems(graphics, myStyle, view, scale, area);
     }
 
     private int calculateYPosition(int currentY, SlideItem item, Graphics graphics, ImageObserver view, float scale)
@@ -89,13 +89,13 @@ public class SlideViewerComponent
         return currentY + item.getBoundingBox(graphics, view, scale).height;
     }
 
-    private void drawTitle(Graphics graphics, Rectangle area, Style style, ImageObserver view, float scale)
+    private void drawTitle(Graphics graphics, Rectangle area, MyStyle myStyle, ImageObserver view, float scale)
     {
         SlideItem title = slide.getTitle();
-        title.draw(area.x, area.y, scale, graphics, (javax.swing.text.Style) style, view);
+        title.draw(area.x, area.y, scale, graphics, (javax.swing.text.Style) myStyle, view);
     }
 
-    private void drawSlideItems(Graphics graphics, Style style, ImageObserver view, float scale, Rectangle area)
+    private void drawSlideItems(Graphics graphics, MyStyle myStyle, ImageObserver view, float scale, Rectangle area)
     {
         int yPosition = area.y;
         for (int number = 0; number < slide.getNumberOfItemsToDraw(); number++)

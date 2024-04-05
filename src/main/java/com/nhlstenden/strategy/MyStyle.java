@@ -2,7 +2,7 @@ package com.nhlstenden.strategy;
 
 import java.awt.*;
 
-public class Style
+public class MyStyle
 {
     private static final String FONT_NAME = "Helvetica";
     private int indent;
@@ -12,7 +12,7 @@ public class Style
     private Color color;
     private static Font font;
 
-    public Style(int indent, Color color, int points,  int leading)
+    public MyStyle(int indent, Color color, int points, int leading)
     {
         this.indent = indent;
         this.leading = leading;
@@ -32,13 +32,14 @@ public class Style
 
     public void setFontSize(int fontSize)
     {
-        Style.fontSize = fontSize;
+        MyStyle.fontSize = fontSize;
     }
 
     public int getIndent()
     {
         return this.indent;
     }
+
 
     public Color getColor()
     {
