@@ -66,7 +66,7 @@ public class SlideViewerComponent
         {
             paintPartOfComponent(graphics);
             Rectangle area = new Rectangle(0, Y_POSITION, this.slide.getDimension("width"), (this.slide.getDimension("height") - Y_POSITION));
-            draw(graphics, area, (ImageObserver) this,);
+            draw(graphics, area, new MyStyle());
         }
     }
 
