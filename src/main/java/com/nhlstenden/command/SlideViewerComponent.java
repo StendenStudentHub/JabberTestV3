@@ -86,12 +86,12 @@ public class SlideViewerComponent
         return currentY + item.getBoundingBox(graphics, view, scale).height;
     }
 
-    private void drawTitle(Graphics graphics, Rectangle area, ImageObserver view, float scale) {
+    private void drawTitle(Graphics graphics, Rectangle area, Style style, ImageObserver view, float scale) {
         SlideItem title = slide.getTitle();
-        title.draw(area.x, area.y, scale, graphics, style);
+        title.draw(area.x, area.y, scale, graphics, (javax.swing.text.Style) style, view);
     }
 
-    private void drawSlideItems(Graphics graphics, ImageObserver view, float scale, Rectangle area)
+    private void drawSlideItems(Graphics graphics, Style style, ImageObserver view, float scale, Rectangle area)
     {
         int yPosition = area.y;
         for (int number = 0; number < slide.getNumberOfItemsToDraw(); number++)
