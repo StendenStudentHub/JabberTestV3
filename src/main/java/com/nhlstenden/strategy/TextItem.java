@@ -17,7 +17,7 @@ public class TextItem extends com.nhlstenden.strategy.SlideItem
         this.text = title;
     }
 
-    public String getTitle()
+    public String getText()
     {
         return this.text;
     }
