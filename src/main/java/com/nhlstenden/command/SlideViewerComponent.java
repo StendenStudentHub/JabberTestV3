@@ -87,7 +87,7 @@ public class SlideViewerComponent
 
     private void drawTitle(Graphics graphics, Rectangle area, ImageObserver view, float scale) {
         SlideItem title = slide.getTitle();
-        title.draw(area.x, area.y, scale, graphics, view);
+        title.draw(area.x, area.y, scale, graphics, view, );
     }
 
     private void drawSlideItems(Graphics graphics, ImageObserver view, float scale, Rectangle area)

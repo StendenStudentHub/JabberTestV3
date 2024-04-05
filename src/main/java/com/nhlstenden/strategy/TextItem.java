@@ -1,5 +1,6 @@
 package com.nhlstenden.strategy;
 
+import javax.swing.text.Style;
 import java.awt.*;
 import java.awt.font.TextAttribute;
 import java.awt.image.ImageObserver;
@@ -25,7 +26,8 @@ public class TextItem extends com.nhlstenden.strategy.SlideItem
     public AttributedString getAttributedString(float scale)
     {
         AttributedString attributedString = new AttributedString(getText());
-        attributedString.addAttribute(TextAttribute.FONT, Style.getFont(scale), 0, text.length());
+        attributedString.addAttribute(TextAttribute.FONT, itemStyle.getAttribute(scale), 0, text.length());
+
         return attributedString;
     }
 
@@ -34,4 +36,5 @@ public class TextItem extends com.nhlstenden.strategy.SlideItem
         return null;
         //Moet nog worden geimplementeerd
     }
+
 }
