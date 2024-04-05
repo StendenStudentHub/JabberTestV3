@@ -92,7 +92,7 @@ public class SlideViewerComponent
     private void drawTitle(Graphics graphics, Rectangle area, MyStyle myStyle, ImageObserver view, float scale)
     {
         SlideItem title = slide.getTitle();
-        title.draw(area.x, area.y, scale, graphics, (javax.swing.text.Style) myStyle, view);
+        title.draw(area.x, area.y, scale, graphics, myStyle, view);
     }
 
     private void drawSlideItems(Graphics graphics, MyStyle myStyle, ImageObserver view, float scale, Rectangle area)
@@ -101,7 +101,7 @@ public class SlideViewerComponent
         for (int number = 0; number < slide.getNumberOfItemsToDraw(); number++)
         {
             SlideItem item = slide.getSlideItems().elementAt(number);
-            item.draw(0, yPosition, scale, graphics, slide.getTitle().getStyle(), view);
+            item.draw(0, yPosition, scale, graphics, myStyle, view);
             yPosition = calculateYPosition(yPosition, item, graphics, view, scale);
         }
     }
