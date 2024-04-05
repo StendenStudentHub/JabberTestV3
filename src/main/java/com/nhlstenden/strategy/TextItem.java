@@ -1,10 +1,14 @@
 package com.nhlstenden.strategy;
 
-import javax.swing.text.Style;
 import java.awt.*;
+import java.awt.font.FontRenderContext;
+import java.awt.font.LineBreakMeasurer;
 import java.awt.font.TextAttribute;
+import java.awt.font.TextLayout;
 import java.awt.image.ImageObserver;
 import java.text.AttributedString;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TextItem extends com.nhlstenden.strategy.SlideItem
 {
@@ -32,9 +36,26 @@ public class TextItem extends com.nhlstenden.strategy.SlideItem
     }
 
     @Override
-    public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale) {
-        return null;
-        //Moet nog worden geimplementeerd
+    public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale)
+    {
+
+    }
+
+    public List<TextLayout> getLayouts(Graphics graphics, float scale)
+    {
+        List<TextLayout> layouts = new ArrayList<TextLayout>();
+        AttributedString attributedString = getAttributedString(scale);
+        Graphics2D graphics2D = (Graphics2D) graphics;
+        FontRenderContext fontRenderContext = graphics2D.getFontRenderContext();
+        LineBreakMeasurer measurer = new LineBreakMeasurer(attributedString.getIterator(), fontRenderContext);
+        float wrappingWidth = (Slide.WIDTH - itemStyle.indent) * scale;
+        while (measurer.getPosition() < getText().length())
+        {
+            TextLayout layout = measurer.nextLayout(wrappingWidth);
+            layouts.add(layout);
+        }
+
+        return layouts;
     }
 
 }
