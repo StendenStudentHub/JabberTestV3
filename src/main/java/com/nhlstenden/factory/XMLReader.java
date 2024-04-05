@@ -2,6 +2,7 @@ package com.nhlstenden.factory;
 
 import com.nhlstenden.factory.PresentationFactory.SupportedPresentationTypes;
 import com.nhlstenden.factory.SlideFactory.SupportedSlideTypes;
+import com.nhlstenden.strategy.Presentation;
 import com.nhlstenden.strategy.Slide;
 
 import org.w3c.dom.Document;
@@ -38,12 +39,12 @@ public class XMLReader extends Reader {
 	protected static final String NFE = "Number Format Exception";
 
 	@Override
-	public com.nhlstenden.command.Presentation Read(String fileName) throws IOException
+	public Presentation Read(String fileName) throws IOException
 	{
 		int slideNumber, itemNumber, max = 0, maxItems = 0;
 		// hard code to REGULARPRESENTATION if we got different types of slides we could
 		// add logic to the factory to support more and swap accordingly.
-		com.nhlstenden.strategy.Presentation presentation = PresentationFactory.GetFactory(SupportedPresentationTypes.REGULARPRESENTATION)
+		com.nhlstenden.command.Presentation presentation = PresentationFactory.GetFactory(SupportedPresentationTypes.REGULARPRESENTATION)
 				.CreatePresentation();
 		try
 		{
