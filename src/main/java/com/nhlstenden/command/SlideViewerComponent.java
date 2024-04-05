@@ -76,17 +76,20 @@ public class SlideViewerComponent
         graphics.drawString("Slide " + (1 + this.presentation.getCurrentSlideNumber()) + " of " + this.presentation.getSize(), X_POSITION, Y_POSITION);
     }
 
-    public void draw(Graphics graphics, Rectangle area, ImageObserver view) {
+    public void draw(Graphics graphics, Rectangle area, ImageObserver view)
+    {
         float scale = getScale(area);
-        drawTitle(graphics, area, view, scale);
+        drawTitle(graphics, area, view, scale, );
         drawSlideItems(graphics, view, scale, area);
     }
 
-    private int calculateYPosition(int currentY, SlideItem item, Graphics graphics, ImageObserver view, float scale) {
+    private int calculateYPosition(int currentY, SlideItem item, Graphics graphics, ImageObserver view, float scale)
+    {
         return currentY + item.getBoundingBox(graphics, view, scale).height;
     }
 
-    private void drawTitle(Graphics graphics, Rectangle area, Style style, ImageObserver view, float scale) {
+    private void drawTitle(Graphics graphics, Rectangle area, Style style, ImageObserver view, float scale)
+    {
         SlideItem title = slide.getTitle();
         title.draw(area.x, area.y, scale, graphics, (javax.swing.text.Style) style, view);
     }
@@ -97,7 +100,7 @@ public class SlideViewerComponent
         for (int number = 0; number < slide.getNumberOfItemsToDraw(); number++)
         {
             SlideItem item = slide.getSlideItems().elementAt(number);
-            item.draw(0, yPosition, scale, graphics, view);
+            item.draw(0, yPosition, scale, graphics, slide.getTitle().getStyle(), view);
             yPosition = calculateYPosition(yPosition, item, graphics, view, scale);
         }
     }
