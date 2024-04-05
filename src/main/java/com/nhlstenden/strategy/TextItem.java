@@ -24,8 +24,8 @@ public class TextItem extends com.nhlstenden.strategy.SlideItem
 
     public AttributedString getAttributedString(float scale)
     {
-        AttributedString attributedString = new AttributedString(getTitle());
-        attributedString.addAttribute(TextAttribute.FONT, itemStyle.getFont(scale), 0, text.length());
+        AttributedString attributedString = new AttributedString(getText());
+        attributedString.addAttribute(TextAttribute.FONT, itemStyle.getAttribute(scale), 0, text.length());
         return attributedString;
     }
 
