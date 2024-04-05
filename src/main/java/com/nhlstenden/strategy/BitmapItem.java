@@ -1,6 +1,7 @@
 package com.nhlstenden.strategy;
 
 import javax.imageio.ImageIO;
+import javax.swing.text.Style;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
@@ -41,6 +42,15 @@ public class BitmapItem extends SlideItem
     public BufferedImage getBufferedImage()
     {
         return this.bufferedImage;
+    }
+
+    @Override
+    public void draw(int x, int y, float scale, Graphics graphics, Style myStyle, ImageObserver imageObserver)
+    {
+        int width = x + (int) (myStyle.indent * scale);
+        int height = y + (int) (myStyle.leading * scale);
+        graphics.drawImage(bufferedImage, width, height,(int) (bufferedImage.getWidth(imageObserver)*scale),
+                (int) (bufferedImage.getHeight(imageObserver)*scale), imageObserver);
     }
 
     @Override

@@ -80,7 +80,7 @@ public class SlideViewerComponent
     public void draw(Graphics graphics, Rectangle area, ImageObserver view, Style style)
     {
         float scale = getScale(area);
-        drawTitle(graphics, area, view, scale, style);
+        drawTitle(graphics, area, style, view, scale);
         drawSlideItems(graphics, style, view, scale, area);
     }
 

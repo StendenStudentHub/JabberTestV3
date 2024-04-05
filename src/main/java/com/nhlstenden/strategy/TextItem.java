@@ -10,6 +10,7 @@ import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import javax.swing.text.Style;
 
 public class TextItem extends SlideItem
 {
@@ -35,7 +36,25 @@ public class TextItem extends SlideItem
 
         return attributedString;
     }
-    
+
+    public List<TextLayout> getLayouts(Graphics graphics, float scale, Style mystyle)
+    {
+        List<TextLayout> layouts = new ArrayList<TextLayout>();
+        AttributedString attributedString = getAttributedString(scale);
+        Graphics2D graphics2D = (Graphics2D) graphics;
+        FontRenderContext fontRenderContext = graphics2D.getFontRenderContext();
+        LineBreakMeasurer measurer = new LineBreakMeasurer(attributedString.getIterator(), fontRenderContext);
+        float wrappingWidth = (Slide.WIDTH - mystyle.getIndent()) * scale;
+        while (measurer.getPosition() < getText().length())
+        {
+            TextLayout layout = measurer.nextLayout(wrappingWidth);
+            layouts.add(layout);
+        }
+
+        return layouts;
+    }
+
+    @Override
     public void draw(int x, int y, float scale, Graphics graphics, Style myStyle, ImageObserver imageObserver)
     {
         if (text == null || text.length() == 0)
@@ -55,23 +74,6 @@ public class TextItem extends SlideItem
             layout.draw(g2d, pen.x, pen.y);
             pen.y += layout.getDescent();
         }
-    }
-
-    public List<TextLayout> getLayouts(Graphics graphics, float scale, Style mystyle)
-    {
-        List<TextLayout> layouts = new ArrayList<TextLayout>();
-        AttributedString attributedString = getAttributedString(scale);
-        Graphics2D graphics2D = (Graphics2D) graphics;
-        FontRenderContext fontRenderContext = graphics2D.getFontRenderContext();
-        LineBreakMeasurer measurer = new LineBreakMeasurer(attributedString.getIterator(), fontRenderContext);
-        float wrappingWidth = (Slide.WIDTH - mystyle.getIndent()) * scale;
-        while (measurer.getPosition() < getText().length())
-        {
-            TextLayout layout = measurer.nextLayout(wrappingWidth);
-            layouts.add(layout);
-        }
-
-        return layouts;
     }
 
     @Override
