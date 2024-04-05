@@ -76,11 +76,11 @@ public class SlideViewerComponent
         graphics.drawString("Slide " + (1 + this.presentation.getCurrentSlideNumber()) + " of " + this.presentation.getSize(), X_POSITION, Y_POSITION);
     }
 
-    public void draw(Graphics graphics, Rectangle area, ImageObserver view)
+    public void draw(Graphics graphics, Rectangle area, ImageObserver view, Style style)
     {
         float scale = getScale(area);
         drawTitle(graphics, area, view, scale, );
-        drawSlideItems(graphics, view, scale, area);
+        drawSlideItems(graphics, style, view, scale, area);
     }
 
     private int calculateYPosition(int currentY, SlideItem item, Graphics graphics, ImageObserver view, float scale)
