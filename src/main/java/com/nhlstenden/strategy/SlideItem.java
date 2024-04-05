@@ -11,6 +11,7 @@ public abstract class SlideItem
     protected ArrayList<SlideItem> subItems;
     protected Style itemStyle;
     protected StyleStrategy styleStrategy;
+
     public SlideItem(int level)
     {
         this.level = level;
@@ -48,7 +49,8 @@ public abstract class SlideItem
         return this.level;
     }
 
-    public abstract Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale);
 
-    public abstract void draw(int x, int y, float scale, Graphics g, Style style, ImageObserver observer);
+    public abstract void draw(int x, int y, float scale, Graphics graphics, Style myStyle, ImageObserver imageObserver);
+
+    public abstract Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale);
 }

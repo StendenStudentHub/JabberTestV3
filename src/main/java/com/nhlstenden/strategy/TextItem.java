@@ -8,6 +8,7 @@ import java.awt.font.TextLayout;
 import java.awt.image.ImageObserver;
 import java.text.AttributedString;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class TextItem extends com.nhlstenden.strategy.SlideItem
@@ -36,9 +37,25 @@ public class TextItem extends com.nhlstenden.strategy.SlideItem
     }
 
     @Override
-    public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale)
+    public void draw(int x, int y, float scale, Graphics graphics, Style myStyle, ImageObserver imageObserver)
     {
-
+        if (text == null || text.length() == 0)
+        {
+            return;
+        }
+        List<TextLayout> layouts = getLayouts(graphics, scale, myStyle);
+        Point pen = new Point(x + (int)(myStyle.getIndent() * scale),
+                y + (int) (myStyle.getLeading() * scale));
+        Graphics2D g2d = (Graphics2D)graphics;
+        g2d.setColor(myStyle.getColor());
+        Iterator<TextLayout> it = layouts.iterator();
+        while (it.hasNext())
+        {
+            TextLayout layout = it.next();
+            pen.y += layout.getAscent();
+            layout.draw(g2d, pen.x, pen.y);
+            pen.y += layout.getDescent();
+        }
     }
 
     public List<TextLayout> getLayouts(Graphics graphics, float scale, Style mystyle)
@@ -56,6 +73,12 @@ public class TextItem extends com.nhlstenden.strategy.SlideItem
         }
 
         return layouts;
+    }
+
+    @Override
+    public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale)
+    {
+        return null;
     }
 
 }
