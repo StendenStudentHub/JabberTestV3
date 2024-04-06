@@ -8,13 +8,17 @@ import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 import java.nio.Buffer;
+import java.util.logging.Logger;
 
 public class BitmapItem extends SlideItem
 {
+    private static final Logger logger = Logger.getLogger(BitmapItem.class.getName());
+
     private String imageName;
     private BufferedImage bufferedImage;
     protected static final String FILE = "Bestand";
-    protected static final String ERROR_NO_FOUND = "NOT FOUND";
+    protected static final String ERROR_NOT_FOUND = "NOT FOUND";
+
     public BitmapItem(int level, String imageName) throws IOException
     {
         super(level);
@@ -23,9 +27,9 @@ public class BitmapItem extends SlideItem
         {
             this.bufferedImage = ImageIO.read(new File(imageName));
         }
-        catch(IOException exception)
+        catch (IOException exception)
         {
-            System.err.println(FILE + imageName + ERROR_NO_FOUND);
+            logger.severe(FILE + imageName + ERROR_NOT_FOUND);
         }
     }
 
@@ -47,17 +51,16 @@ public class BitmapItem extends SlideItem
     @Override
     public void draw(int x, int y, float scale, Graphics graphics, MyStyle style, ImageObserver imageObserver)
     {
-
-        int width = x + (int) (style.getIndent()* scale);
+        int width = x + (int) (style.getIndent() * scale);
         int height = y + (int) (style.getLeading() * scale);
-        graphics.drawImage(bufferedImage, width, height,(int) (bufferedImage.getWidth(imageObserver)*scale),
-                (int) (bufferedImage.getHeight(imageObserver)*scale), imageObserver);
+        graphics.drawImage(bufferedImage, width, height, (int) (bufferedImage.getWidth(imageObserver) * scale),
+                (int) (bufferedImage.getHeight(imageObserver) * scale), imageObserver);
     }
 
     @Override
     public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale)
     {
-        //Moet nog worden geimplementeerd
+        // Needs to be implemented
         return null;
     }
 }

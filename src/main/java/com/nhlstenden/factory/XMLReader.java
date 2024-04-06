@@ -16,14 +16,16 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
+import java.util.logging.Logger;
 
 
 public class XMLReader extends Reader {
 
-	/** Default API to use. */
+	private static final Logger logger = Logger.getLogger(XMLReader.class.getName());
+
 	protected static final String DEFAULT_API_TO_USE = "dom";
 
-	/** namen van xml tags of attributen */
 	protected static final String SHOWTITLE = "showtitle";
 	protected static final String SLIDETITLE = "title";
 	protected static final String SLIDE = "slide";
@@ -33,17 +35,18 @@ public class XMLReader extends Reader {
 	protected static final String TEXT = "text";
 	protected static final String IMAGE = "image";
 
-	/** tekst van messages */
 	protected static final String PCE = "Parser Configuration Exception";
 	protected static final String UNKNOWNTYPE = "Unknown Element type";
 	protected static final String NFE = "Number Format Exception";
 
 	@Override
-	public Presentation Read(String fileName) throws IOException {
+	public Presentation Read(String fileName) throws IOException
+	{
 		int slideNumber, itemNumber, max = 0, maxItems = 0;
 		com.nhlstenden.strategy.Presentation presentation = PresentationFactory
 				.GetFactory(SupportedPresentationTypes.REGULARPRESENTATION).CreatePresentation();
-		try {
+		try
+		{
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			factory.setFeature("http://xml.org/sax/features/external-general-entities", false);
 			factory.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
@@ -55,7 +58,8 @@ public class XMLReader extends Reader {
 
 			NodeList slides = doc.getElementsByTagName(SLIDE);
 			max = slides.getLength();
-			for (slideNumber = 0; slideNumber < max; slideNumber++) {
+			for (slideNumber = 0; slideNumber < max; slideNumber++)
+			{
 				Element xmlSlide = (Element) slides.item(slideNumber);
 				Slide slide = SlideFactory.GetFactory(SupportedSlideTypes.ITEMSLIDE).CreateSLide();
 				slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
@@ -63,17 +67,24 @@ public class XMLReader extends Reader {
 
 				NodeList slideItems = xmlSlide.getElementsByTagName(ITEM);
 				maxItems = slideItems.getLength();
-				for (itemNumber = 0; itemNumber < maxItems; itemNumber++) {
+				for (itemNumber = 0; itemNumber < maxItems; itemNumber++)
+				{
 					Element item = (Element) slideItems.item(itemNumber);
 					loadSlideItem(slide, item);
 				}
 			}
-		} catch (IOException iox) {
-			System.err.println(iox.toString());
-		} catch (SAXException sax) {
-			System.err.println(sax.getMessage());
-		} catch (ParserConfigurationException pcx) {
-			System.err.println(PCE);
+		}
+		catch (IOException iox)
+		{
+			logger.severe(iox.toString());
+		}
+		catch (SAXException sax)
+		{
+			logger.severe(sax.getMessage());
+		}
+		catch (ParserConfigurationException pcx)
+		{
+			logger.severe(PCE);
 		}
 
 		return presentation;
@@ -93,11 +104,11 @@ public class XMLReader extends Reader {
 			}
 			catch (NumberFormatException x)
 			{
-				System.err.println(NFE);
+				logger.severe(NFE);
 			}
 		}
 		String type = attributes.getNamedItem(KIND).getTextContent();
-		slide.append(SlideItemFactory.GetSlideItemFactory(type).CreateSlideItem(level, item.getTextContent()));
+		slide.append(Objects.requireNonNull(SlideItemFactory.GetSlideItemFactory(type)).CreateSlideItem(level, item.getTextContent()));
 	}
 
 	private String getTitle(Element element, String tagName)

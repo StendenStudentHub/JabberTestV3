@@ -1,15 +1,16 @@
 package com.nhlstenden.factory;
 
 import com.nhlstenden.strategy.*;
-
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Vector;
+import java.util.logging.Logger;
 
 public class XMLWriter extends Writer
 {
+
+	private static final Logger logger = Logger.getLogger(XMLWriter.class.getName());
 
 	@Override
 	public void Write(Presentation presentation, String filename) throws IOException
@@ -29,7 +30,7 @@ public class XMLWriter extends Writer
 			Vector<SlideItem> slideItems = slide.getSlideItems();
 			for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++)
 			{
-				SlideItem slideItem = (SlideItem) slideItems.elementAt(itemNumber);
+				SlideItem slideItem = slideItems.elementAt(itemNumber);
 				out.print("<item kind=");
 				if (slideItem instanceof TextItem)
 				{
@@ -45,7 +46,7 @@ public class XMLWriter extends Writer
 					}
 					else
 					{
-						System.out.println("Ignoring " + slideItem);
+						logger.warning("Ignoring " + slideItem);
 					}
 				}
 				out.println("</item>");
