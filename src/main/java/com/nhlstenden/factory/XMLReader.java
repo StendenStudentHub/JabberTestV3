@@ -39,56 +39,46 @@ public class XMLReader extends Reader {
 	protected static final String NFE = "Number Format Exception";
 
 	@Override
-	public Presentation Read(String fileName) throws IOException
-	{
+	public Presentation Read(String fileName) throws IOException {
 		int slideNumber, itemNumber, max = 0, maxItems = 0;
-		// hard code to REGULARPRESENTATION if we got different types of slides we could
-		// add logic to the factory to support more and swap accordingly.
-		com.nhlstenden.strategy.Presentation presentation = PresentationFactory.GetFactory(SupportedPresentationTypes.REGULARPRESENTATION)
-				.CreatePresentation();
-		try
-		{
+		com.nhlstenden.strategy.Presentation presentation = PresentationFactory
+				.GetFactory(SupportedPresentationTypes.REGULARPRESENTATION).CreatePresentation();
+		try {
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			factory.setFeature("http://xml.org/sax/features/external-general-entities", false);
+			factory.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
 
-			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-			Document document = builder.parse(new File(fileName)); // maak een JDOM document
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document document = builder.parse(new File(fileName));
 			Element doc = document.getDocumentElement();
 			presentation.setTitle(getTitle(doc, SHOWTITLE));
 
 			NodeList slides = doc.getElementsByTagName(SLIDE);
 			max = slides.getLength();
-			for (slideNumber = 0; slideNumber < max; slideNumber++)
-			{
+			for (slideNumber = 0; slideNumber < max; slideNumber++) {
 				Element xmlSlide = (Element) slides.item(slideNumber);
-				// hard code to ITEMSLIDE if we got different types of slides we could add logic
-				// to the factory to support more and swap accordingly.
 				Slide slide = SlideFactory.GetFactory(SupportedSlideTypes.ITEMSLIDE).CreateSLide();
 				slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
 				presentation.append(slide);
 
 				NodeList slideItems = xmlSlide.getElementsByTagName(ITEM);
 				maxItems = slideItems.getLength();
-				for (itemNumber = 0; itemNumber < maxItems; itemNumber++)
-				{
+				for (itemNumber = 0; itemNumber < maxItems; itemNumber++) {
 					Element item = (Element) slideItems.item(itemNumber);
 					loadSlideItem(slide, item);
 				}
 			}
-		}
-		catch (IOException iox)
-		{
+		} catch (IOException iox) {
 			System.err.println(iox.toString());
-		}
-		catch (SAXException sax)
-		{
+		} catch (SAXException sax) {
 			System.err.println(sax.getMessage());
-		}
-		catch (ParserConfigurationException pcx)
-		{
+		} catch (ParserConfigurationException pcx) {
 			System.err.println(PCE);
 		}
 
 		return presentation;
 	}
+
 
 	protected void loadSlideItem(Slide slide, Element item)
 	{
