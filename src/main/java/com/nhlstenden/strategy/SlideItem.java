@@ -3,19 +3,20 @@ package com.nhlstenden.strategy;
 import javax.swing.text.Style;
 import java.awt.*;
 import java.awt.image.ImageObserver;
+import java.util.List;
 import java.util.ArrayList;
 
 public abstract class SlideItem
 {
     private int level;
-    protected ArrayList<SlideItem> subItems;
+    protected List<SlideItem> subItems;
     protected Style itemStyle;
     protected StyleStrategy styleStrategy;
 
     public SlideItem(int level)
     {
         this.level = level;
-        this.subItems = new ArrayList<SlideItem>();
+        this.subItems = new ArrayList<>(); // Initialize as ArrayList to keep it compatible with existing code
     }
 
     public void addSlideItem(SlideItem subItem)
@@ -23,12 +24,11 @@ public abstract class SlideItem
         subItems.add(subItem);
     }
 
-    public int getSubItems()
-    {
+    public int getSubItems() {
         return this.subItems.size();
     }
 
-    public ArrayList<SlideItem> getSubItemsList()
+    public List<SlideItem> getSubItemsList()
     {
         return this.subItems;
     }

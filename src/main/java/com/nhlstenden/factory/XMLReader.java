@@ -43,8 +43,7 @@ public class XMLReader extends Reader {
 	public Presentation Read(String fileName) throws IOException
 	{
 		int slideNumber, itemNumber, max = 0, maxItems = 0;
-		com.nhlstenden.strategy.Presentation presentation = PresentationFactory
-				.GetFactory(SupportedPresentationTypes.REGULARPRESENTATION).CreatePresentation();
+		com.nhlstenden.strategy.Presentation presentation = PresentationFactory.GetFactory(SupportedPresentationTypes.REGULARPRESENTATION).CreatePresentation();
 		try
 		{
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
