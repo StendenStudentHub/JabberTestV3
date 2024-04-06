@@ -6,7 +6,7 @@ public abstract class Command
 {
     private SlideViewer slideViewer;
 
-    public Command(SlideViewer slideViewer)
+    protected Command(SlideViewer slideViewer)
     {
         this.slideViewer = slideViewer;
     }
