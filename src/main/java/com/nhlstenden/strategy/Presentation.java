@@ -49,6 +49,7 @@ public class Presentation
 		this.currentSlideNumber = number;
 	}
 
+	//Clear the presentation, set the showlist to a new list
 	public void clear()
 	{
 		this.showList = new ArrayList<Slide>();
@@ -59,6 +60,7 @@ public class Presentation
 		this.showList.add(slide);
 	}
 
+	//Get slide if the given number is not zero and not greater than the size
 	public Slide getSlide(int number)
 	{
 		if (number < 0 || number >= getSize())

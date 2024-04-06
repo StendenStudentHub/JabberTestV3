@@ -13,6 +13,9 @@ public class CmdFactory
         this.slideviewer = slideviewer;
     }
 
+    //All these methods makes a command method.
+    //It's making a new object of the classes that starts with a Cmd in this package
+
     public Command createNextSlideCMD()
     {
         return new CmdNextSlide(slideviewer);

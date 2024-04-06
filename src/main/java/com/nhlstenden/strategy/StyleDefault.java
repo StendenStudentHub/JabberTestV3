@@ -18,6 +18,7 @@ public class StyleDefault extends StyleStrategy
 
     private void styleDefault()
     {
+        //Set the default style
         myStyles = new MyStyle[5];
 
         myStyles[0] = new MyStyle(0, Color.red, 48, 20);

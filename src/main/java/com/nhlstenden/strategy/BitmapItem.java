@@ -48,6 +48,7 @@ public class BitmapItem extends SlideItem
         return this.bufferedImage;
     }
 
+    //Draw the bitmap
     @Override
     public void draw(int x, int y, float scale, Graphics graphics, MyStyle style, ImageObserver imageObserver)
     {
@@ -57,6 +58,7 @@ public class BitmapItem extends SlideItem
                 (int) (bufferedImage.getHeight(imageObserver) * scale), imageObserver);
     }
 
+    //Get the bounding box of the image
     @Override
     public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, MyStyle style, float scale)
     {

@@ -49,7 +49,9 @@ public abstract class SlideItem
         return this.level;
     }
 
+    //Abstract method for drawing
     public abstract void draw(int x, int y, float scale, Graphics graphics, MyStyle style, ImageObserver imageObserver);
 
+    //Abstract method for getting the bounding box for the image
     public abstract Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, MyStyle style, float scale);
 }

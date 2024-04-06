@@ -10,6 +10,8 @@ public class CmdNextItem extends Command
     @Override
     public void execute()
     {
+        //Get the slideViewer to show the next item
+        //Update the view after this method
         this.getSlideViewer().nextItem();
         this.getSlideViewer().updateView();
     }

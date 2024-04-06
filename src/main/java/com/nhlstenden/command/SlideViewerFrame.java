@@ -32,6 +32,7 @@ public class SlideViewerFrame extends JFrame
         this.title = title;
     }
 
+    //Set up the window
     public void setWindow(SlideViewerComponent slideViewerComponent, SlideViewer slideViewer) {
         setTitle(JABBERPOINT_TITLE);
         addCloseWindowListener();
@@ -42,6 +43,7 @@ public class SlideViewerFrame extends JFrame
         showWindow();
     }
 
+    //All the different methods for the setWindow.
     private void addCloseWindowListener() {
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {

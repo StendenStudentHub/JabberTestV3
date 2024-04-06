@@ -42,6 +42,7 @@ public class SlideViewerComponent
         return new Dimension(Slide.WIDTH, Slide.HEIGHT);
     }
 
+    //Update the view with a repaint method
     public void update(String title, Slide data)
     {
         if (data == null)
@@ -56,6 +57,7 @@ public class SlideViewerComponent
         }
     }
 
+    //Paint the component
     public void paintComponent(Graphics graphics, MyStyle style)
     {
         graphics.setColor(BACKGROUND_COLOR);
@@ -69,6 +71,7 @@ public class SlideViewerComponent
         }
     }
 
+    //Set the font and the color
     private void paintPartOfComponent(Graphics graphics)
     {
         graphics.setFont(this.labelFont);
@@ -76,6 +79,7 @@ public class SlideViewerComponent
         graphics.drawString("Slide " + (1 + this.presentation.getSlideNumber()) + " of " + this.presentation.getSize(), X_POSITION, Y_POSITION);
     }
 
+    //Draw the slide
     public void draw(Graphics graphics, Rectangle area, ImageObserver view, MyStyle myStyle)
     {
         float scale = getScale(area);
@@ -83,17 +87,20 @@ public class SlideViewerComponent
         drawSlideItems(graphics, myStyle, view, scale, area);
     }
 
+    //Calculate the Y position to work with
     private int calculateYPosition(int currentY, SlideItem item, Graphics graphics, ImageObserver view, MyStyle style, float scale)
     {
         return currentY + item.getBoundingBox(graphics, view, style, scale).height;
     }
 
+    //Draw the title
     private void drawTitle(Graphics graphics, Rectangle area, MyStyle myStyle, ImageObserver view, float scale)
     {
         SlideItem title = slide.getTitle();
         title.draw(area.x, area.y, scale, graphics, myStyle, view);
     }
 
+    //Draw the slide items
     private void drawSlideItems(Graphics graphics, MyStyle myStyle, ImageObserver view, float scale, Rectangle area)
     {
         int yPosition = area.y;
@@ -105,6 +112,7 @@ public class SlideViewerComponent
         }
     }
 
+    //Get the scale from the slide to draw
     private float getScale(Rectangle area)
     {
         return Math.min(((float) area.width) / ((float) Slide.WIDTH), ((float) area.height) / ((float) Slide.HEIGHT));
