@@ -46,9 +46,11 @@ public class SlideViewer
         }
     }
 
-    public void goToSlideNumber(int number)
+    public void goToSlideNumber()
     {
-        setSlideNumber(number);
+        String page = "Page number?";
+        int pageNumber = getIntegerField(page);
+        setSlideNumber(pageNumber - 1);
     }
 
     public void clear()

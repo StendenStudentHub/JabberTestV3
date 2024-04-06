@@ -55,9 +55,9 @@ public class BitmapItem extends SlideItem
     }
 
     @Override
-    public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale)
+    public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, MyStyle style, float scale)
     {
-        //Moet nog worden geimplementeerd
-        return null;
+        return new Rectangle((int) (style.getIndent() * scale), 0, (int) (bufferedImage.getWidth(observer) * scale),
+                ((int) (style.getLeading() * scale)) + (int) (bufferedImage.getHeight(observer) * scale));
     }
 }

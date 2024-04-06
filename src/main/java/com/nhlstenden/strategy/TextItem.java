@@ -5,6 +5,7 @@ import java.awt.font.FontRenderContext;
 import java.awt.font.LineBreakMeasurer;
 import java.awt.font.TextAttribute;
 import java.awt.font.TextLayout;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.ImageObserver;
 import java.text.AttributedString;
 import java.util.ArrayList;
@@ -54,7 +55,6 @@ public class TextItem extends SlideItem
         return layouts;
     }
 
-
     @Override
     public void draw(int x, int y, float scale, Graphics graphics, MyStyle style, ImageObserver imageObserver)
     {
@@ -68,19 +68,32 @@ public class TextItem extends SlideItem
                 y + (int) (style.getLeading() * scale));
         Graphics2D g2d = (Graphics2D)graphics;
         g2d.setColor(style.getColor());
-        Iterator<TextLayout> it = layouts.iterator();
-        while (it.hasNext())
-        {
-            TextLayout layout = it.next();
-            pen.y += layout.getAscent();
+        for (TextLayout layout : layouts) {
+            pen.y += (int) layout.getAscent();
             layout.draw(g2d, pen.x, pen.y);
-            pen.y += layout.getDescent();
+            pen.y += (int) layout.getDescent();
         }
     }
 
     @Override
-    public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale)
+    public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, MyStyle style, float scale)
     {
-        return null;
+        List<TextLayout> layouts = getLayouts(graphics, style, scale);
+        int xsize = 0, ysize = (int) (style.getLeading() * scale);
+        Iterator<TextLayout> iterator = layouts.iterator();
+
+        while (iterator.hasNext()) {
+            TextLayout layout = iterator.next();
+            Rectangle2D bounds = layout.getBounds();
+            if (bounds.getWidth() > xsize) {
+                xsize = (int) bounds.getWidth();
+            }
+            if (bounds.getHeight() > 0) {
+                ysize += (int) bounds.getHeight();
+            }
+            ysize += (int) (layout.getLeading() + layout.getDescent());
+        }
+
+        return new Rectangle((int) (style.getIndent() * scale), 0, xsize, ysize);
     }
 }

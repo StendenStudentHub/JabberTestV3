@@ -46,13 +46,12 @@ public class SlideViewerComponent
     {
         if (data == null)
         {
-            //repaint();
-            return;
+            frame.repaint();
         }
         else
         {
             this.slide = data;
-            //repaint();
+            frame.repaint();
             this.frame.setTitle(title);
         }
     }
@@ -84,9 +83,9 @@ public class SlideViewerComponent
         drawSlideItems(graphics, myStyle, view, scale, area);
     }
 
-    private int calculateYPosition(int currentY, SlideItem item, Graphics graphics, ImageObserver view, float scale)
+    private int calculateYPosition(int currentY, SlideItem item, Graphics graphics, ImageObserver view, MyStyle style, float scale)
     {
-        return currentY + item.getBoundingBox(graphics, view, scale).height;
+        return currentY + item.getBoundingBox(graphics, view, style, scale).height;
     }
 
     private void drawTitle(Graphics graphics, Rectangle area, MyStyle myStyle, ImageObserver view, float scale)
@@ -102,7 +101,7 @@ public class SlideViewerComponent
         {
             SlideItem item = slide.getSlideItems().elementAt(number);
             item.draw(0, yPosition, scale, graphics, myStyle, view);
-            yPosition = calculateYPosition(yPosition, item, graphics, view, scale);
+            yPosition = calculateYPosition(yPosition, item, graphics, view, myStyle, scale);
         }
     }
 
