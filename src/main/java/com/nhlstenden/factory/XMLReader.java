@@ -16,14 +16,16 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
+import java.util.logging.Logger;
 
 
 public class XMLReader extends Reader {
 
-	/** Default API to use. */
+	private static final Logger logger = Logger.getLogger(XMLReader.class.getName());
+
 	protected static final String DEFAULT_API_TO_USE = "dom";
 
-	/** namen van xml tags of attributen */
 	protected static final String SHOWTITLE = "showtitle";
 	protected static final String SLIDETITLE = "title";
 	protected static final String SLIDE = "slide";
@@ -33,7 +35,6 @@ public class XMLReader extends Reader {
 	protected static final String TEXT = "text";
 	protected static final String IMAGE = "image";
 
-	/** tekst van messages */
 	protected static final String PCE = "Parser Configuration Exception";
 	protected static final String UNKNOWNTYPE = "Unknown Element type";
 	protected static final String NFE = "Number Format Exception";
@@ -42,15 +43,16 @@ public class XMLReader extends Reader {
 	public Presentation Read(String fileName) throws IOException
 	{
 		int slideNumber, itemNumber, max = 0, maxItems = 0;
-		// hard code to REGULARPRESENTATION if we got different types of slides we could
-		// add logic to the factory to support more and swap accordingly.
-		com.nhlstenden.strategy.Presentation presentation = PresentationFactory.GetFactory(SupportedPresentationTypes.REGULARPRESENTATION)
-				.CreatePresentation();
+		com.nhlstenden.strategy.Presentation presentation = PresentationFactory
+				.GetFactory(SupportedPresentationTypes.REGULARPRESENTATION).CreatePresentation();
 		try
 		{
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			factory.setFeature("http://xml.org/sax/features/external-general-entities", false);
+			factory.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
 
-			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-			Document document = builder.parse(new File(fileName)); // maak een JDOM document
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document document = builder.parse(new File(fileName));
 			Element doc = document.getDocumentElement();
 			presentation.setTitle(getTitle(doc, SHOWTITLE));
 
@@ -59,8 +61,6 @@ public class XMLReader extends Reader {
 			for (slideNumber = 0; slideNumber < max; slideNumber++)
 			{
 				Element xmlSlide = (Element) slides.item(slideNumber);
-				// hard code to ITEMSLIDE if we got different types of slides we could add logic
-				// to the factory to support more and swap accordingly.
 				Slide slide = SlideFactory.GetFactory(SupportedSlideTypes.ITEMSLIDE).CreateSLide();
 				slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
 				presentation.append(slide);
@@ -76,19 +76,20 @@ public class XMLReader extends Reader {
 		}
 		catch (IOException iox)
 		{
-			System.err.println(iox.toString());
+			logger.severe(iox.toString());
 		}
 		catch (SAXException sax)
 		{
-			System.err.println(sax.getMessage());
+			logger.severe(sax.getMessage());
 		}
 		catch (ParserConfigurationException pcx)
 		{
-			System.err.println(PCE);
+			logger.severe(PCE);
 		}
 
 		return presentation;
 	}
+
 
 	protected void loadSlideItem(Slide slide, Element item)
 	{
@@ -103,11 +104,11 @@ public class XMLReader extends Reader {
 			}
 			catch (NumberFormatException x)
 			{
-				System.err.println(NFE);
+				logger.severe(NFE);
 			}
 		}
 		String type = attributes.getNamedItem(KIND).getTextContent();
-		slide.append(SlideItemFactory.GetSlideItemFactory(type).CreateSlideItem(level, item.getTextContent()));
+		slide.append(Objects.requireNonNull(SlideItemFactory.GetSlideItemFactory(type)).CreateSlideItem(level, item.getTextContent()));
 	}
 
 	private String getTitle(Element element, String tagName)

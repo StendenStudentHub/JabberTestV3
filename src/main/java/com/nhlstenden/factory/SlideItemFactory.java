@@ -1,17 +1,13 @@
 package com.nhlstenden.factory;
 
 import com.nhlstenden.strategy.SlideItem;
-
-/**
- * SlideItemFactory
- * <p>
- * Abstract factory used to create different slide items based on their specific
- * itemType.
- * </p>
- */
+import java.util.logging.Logger;
 
 public abstract class SlideItemFactory
 {
+
+	private static final Logger logger = Logger.getLogger(SlideItemFactory.class.getName());
+
 	public static SlideItemFactory GetSlideItemFactory(String itemType)
 	{
 		switch (itemType)
@@ -26,13 +22,11 @@ public abstract class SlideItemFactory
 			}
 			default ->
 			{
-				System.err.println(
-						itemType + "is not an exisitng item type, please check your xml for any non supported types");
+				logger.warning(itemType + " is not an existing item type, please check your xml for any non supported types");
 				return null;
 			}
 		}
 	}
 
 	public abstract SlideItem CreateSlideItem(int level, String content);
-
 }
