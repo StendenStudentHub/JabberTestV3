@@ -37,7 +37,8 @@ public class CmdSave extends Command
         {
             // Writes the presentation to the file
             writer.Write(this.presentation, SAVE_FILE);
-        } catch (IOException exception)
+        }
+        catch (IOException exception)
         {
             // Displays an error message dialog if an IOException occurs during writing
             JOptionPane.showMessageDialog(parent, IO_EXCEPTION + exception, SAVE_ERROR, JOptionPane.ERROR_MESSAGE);
