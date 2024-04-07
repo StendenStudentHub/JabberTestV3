@@ -12,7 +12,7 @@ import java.util.Vector;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class XMLWriterTest
@@ -46,8 +46,8 @@ public class XMLWriterTest
         when(presentationMock.getSlide(0)).thenReturn(slideMock1);
         when(presentationMock.getSlide(1)).thenReturn(slideMock2);
 
-        when(slideMock1.getTitle()).thenReturn(slide1Title);
-        when(slideMock2.getTitle()).thenReturn(slide2Title);
+        when(textItemMock1.getText()).thenReturn(text1);
+        when(textItemMock2.getText()).thenReturn(text2);
 
         Vector<SlideItem> slideItems1 = new Vector<>();
         slideItems1.add(textItemMock1);

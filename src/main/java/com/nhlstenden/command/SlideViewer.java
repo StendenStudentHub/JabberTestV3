@@ -4,10 +4,10 @@ import com.nhlstenden.strategy.Slide;
 import com.nhlstenden.strategy.Presentation;
 
 import javax.swing.*;
+import java.awt.*;
 
 // Class responsible for managing the presentation viewing functionality
-public class SlideViewer
-{
+public class SlideViewer extends MenuBar {
     private Presentation presentation;
     private SlideViewerComponent slideViewerComponent;
 
@@ -212,7 +212,8 @@ public class SlideViewer
         {
             String questionStr = JOptionPane.showInputDialog((Object) argument);
             return Integer.parseInt(questionStr);
-        } catch (NumberFormatException exc)
+        }
+        catch (NumberFormatException exc)
         {
             System.out.println("only numeric input");
             return -1;

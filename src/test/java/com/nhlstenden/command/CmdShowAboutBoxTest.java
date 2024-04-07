@@ -9,6 +9,7 @@ import org.mockito.MockitoAnnotations;
 import java.awt.*;
 
 import static org.mockito.Mockito.*;
+import static org.powermock.api.mockito.PowerMockito.whenNew;
 
 public class CmdShowAboutBoxTest {
 
@@ -24,14 +25,16 @@ public class CmdShowAboutBoxTest {
     }
 
     @Test
-    void execute_ShowAboutBox_Successfully() {
+    void execute_ShowAboutBox_Successfully() throws Exception {
         // Arrange
         CmdShowAboutBox command = new CmdShowAboutBox(mockSlideViewer, mockParentFrame);
+        AboutBox mockAboutBox = mock(AboutBox.class);
 
         // Act
+        whenNew(AboutBox.class).withNoArguments().thenReturn(mockAboutBox);
         command.execute();
 
         // Assert
-       // verify(AboutBox.class, times(1)).show(mockParentFrame);
+        verify(mockAboutBox, times(1)).show(mockParentFrame);
     }
 }

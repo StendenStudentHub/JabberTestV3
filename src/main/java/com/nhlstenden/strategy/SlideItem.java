@@ -50,6 +50,8 @@ public abstract class SlideItem
         return this.level;
     }
 
+    public abstract String getText();
+
     //Abstract method for drawing
     public abstract void draw(int x, int y, float scale, Graphics graphics, MyStyle style, ImageObserver imageObserver);
 

@@ -1,19 +1,19 @@
 package com.nhlstenden.strategy;
 
-
 import org.junit.jupiter.api.Test;
 
 import javax.swing.text.Style;
 
 import java.awt.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-public class StyleStrategyTest {
+public class StyleStrategyTest
+{
 
     @Test
-    void setStyle_ShouldSetStyle() {
+    void setStyle_ShouldSetStyle()
+    {
         // Arrange
         SlideItem item = mock(SlideItem.class);
         StyleStrategy styleStrategy = new MyStyleStrategy();
@@ -26,9 +26,11 @@ public class StyleStrategyTest {
     }
 
     // Mock implementation of StyleStrategy for testing purposes
-    static class MyStyleStrategy extends StyleStrategy {
+    static class MyStyleStrategy extends StyleStrategy
+    {
         @Override
-        public void setStyle(SlideItem item) {
+        public void setStyle(SlideItem item)
+        {
             MyStyle style = new MyStyle(0, Color.red, 48, 20);
             item.setItemStyle((Style) style);
         }

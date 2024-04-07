@@ -24,6 +24,7 @@ public class TextItem extends SlideItem
         this.text = title;
     }
 
+    @Override
     public String getText()
     {
         return this.text;

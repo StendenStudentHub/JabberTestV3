@@ -33,6 +33,11 @@ public class StyleDefaultTest
         }
 
         @Override
+        public String getText() {
+            return null;
+        }
+
+        @Override
         public void draw(int x, int y, float scale, Graphics graphics, MyStyle style, ImageObserver imageObserver)
         {
             // Do nothing in this mock implementation

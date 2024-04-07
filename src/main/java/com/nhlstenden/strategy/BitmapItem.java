@@ -48,6 +48,12 @@ public class BitmapItem extends SlideItem
         return this.bufferedImage;
     }
 
+    @Override
+    public String getText()
+    {
+        return null;
+    }
+
     //Draw the bitmap
     @Override
     public void draw(int x, int y, float scale, Graphics graphics, MyStyle style, ImageObserver imageObserver)
