@@ -21,8 +21,7 @@ public class BitmapItemFactoryTest {
     }
 
     @Test
-    void createSlideItem_WhenValidLevelAndContentProvided_ShouldReturnBitmapItem()
-    {
+    void createSlideItem_WhenValidLevelAndContentProvided_ShouldReturnBitmapItem() throws IOException {
         // Arrange
         int level = 1;
         String content = "image.png";
@@ -34,7 +33,7 @@ public class BitmapItemFactoryTest {
         assertNotNull(slideItem);
         assertTrue(slideItem instanceof BitmapItem);
         assertEquals(level, slideItem.getLevel());
-        assertEquals(content, ((BitmapItem) slideItem).getImagePath());
+        assertEquals(content, ((BitmapItem) slideItem).getImageName());
     }
 
     @Test

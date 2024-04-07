@@ -1,9 +1,5 @@
 package com.nhlstenden.factory;
 
-import com.nhlstenden.strategy.Presentation;
-
-import java.io.IOException;
-
 public class DemoAccesorFactory extends AccessorFactory
 {
 
