@@ -10,9 +10,12 @@ public class CmdAllOrNext extends Command
     @Override
     public void execute()
     {
-        //Get the slideViewer to show the next slide of all the slides
-        //Update the view after this method
-        this.getSlideViewer().showAllOrNext();
-        this.getSlideViewer().updateView();
+        SlideViewer slideViewer = getSlideViewer();
+
+        if (slideViewer != null)
+        {
+            slideViewer.showAllOrNext();
+            slideViewer.updateView();
+        }
     }
 }

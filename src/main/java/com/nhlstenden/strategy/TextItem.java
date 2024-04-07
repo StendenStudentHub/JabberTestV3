@@ -84,6 +84,7 @@ public class TextItem extends SlideItem
     {
         List<TextLayout> layouts = getLayouts(graphics, style, scale);
         int xSize = 0,
+
         ySize = (int) (style.getLeading() * scale);
 
         for (TextLayout layout : layouts)
