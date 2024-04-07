@@ -7,28 +7,42 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
-public class CmdOpen extends Command
-{
-    protected static final String TEST_FILE = "test.xml";
-    protected static final String  IO_EXCEPTION = "Io Exception";
-    protected static final String LOADER_ERROR = "Load Error";
+// Command to open and load a presentation from a file
+public class CmdOpen extends Command {
+    protected static final String TEST_FILE = "test.xml"; // File to be opened
+    protected static final String IO_EXCEPTION = "Io Exception"; // Exception message for IO errors
+    protected static final String LOADER_ERROR = "Load Error"; // Error message for loading errors
+
+    // Parent frame for displaying error messages
     private Frame parent;
-    public CmdOpen(SlideViewer slideViewer, Frame parent) {
+
+    // Constructor to initialize the command with a SlideViewer and parent frame
+    public CmdOpen(SlideViewer slideViewer, Frame parent)
+    {
         super(slideViewer);
         this.parent = parent;
     }
 
+    // Executes the command to open and load a presentation
     @Override
-    public void execute() throws IOException {
+    public void execute() throws IOException
+    {
+        // Clears the current presentation in the SlideViewer
         getSlideViewer().clear();
+
+        // Creates a reader using the AccessorFactory for reading the file
         Reader reader = AccessorFactory.GetFactory(TEST_FILE).CreateReader();
+
         try
         {
+            // Reads the presentation from the file
             getSlideViewer().setPresentation(reader.Read(TEST_FILE));
+
+            // Sets the initial slide number to display
             getSlideViewer().setSlideNumber(0);
-        }
-        catch (IOException exception)
+        } catch (IOException exception)
         {
+            // Displays an error message dialog if an IOException occurs during reading
             JOptionPane.showMessageDialog(parent, IO_EXCEPTION + exception, LOADER_ERROR, JOptionPane.ERROR_MESSAGE);
         }
     }

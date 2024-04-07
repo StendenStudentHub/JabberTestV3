@@ -12,6 +12,8 @@ public class CmdSlideByNumber extends Command
     @Override
     public void execute()
     {
+        //Get the slideViewer to got to a slide number
+        //Update the view after this method
         slideViewer.goToSlideNumber();
     }
 }

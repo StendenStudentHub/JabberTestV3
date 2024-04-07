@@ -5,6 +5,8 @@ import com.nhlstenden.strategy.Slide;
 
 public class GeneratePresentation
 {
+    //This method will generate a presentation with the given parameters.
+    //It's using an int and a String list for the different texts and titles for the slides.
     public static Presentation generatePresentation(String title, int[] levels, String[] slideTwoTitles, String[] slideTwoTexts)
     {
         Presentation presentation = new Presentation();

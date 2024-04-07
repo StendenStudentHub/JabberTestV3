@@ -10,6 +10,7 @@ public class CmdExit extends Command
     @Override
     public void execute()
     {
+        //Exit the program with a status code
         this.getSlideViewer().exit(0);
     }
 }

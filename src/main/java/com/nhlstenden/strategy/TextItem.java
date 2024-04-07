@@ -29,6 +29,7 @@ public class TextItem extends SlideItem
         return this.text;
     }
 
+    //Get the attributed string of the item
     public AttributedString getAttributedString(float scale)
     {
         AttributedString attributedString = new AttributedString(getText());
@@ -37,6 +38,7 @@ public class TextItem extends SlideItem
         return attributedString;
     }
 
+    //Get the layout, used in the draw and bounding box method
     public List<TextLayout> getLayouts(Graphics graphics, MyStyle style,float scale)
     {
         List<TextLayout> layouts = new ArrayList<>();
@@ -54,6 +56,7 @@ public class TextItem extends SlideItem
         return layouts;
     }
 
+    //Draw the textItem
     @Override
     public void draw(int x, int y, float scale, Graphics graphics, MyStyle style, ImageObserver imageObserver)
     {
@@ -75,6 +78,7 @@ public class TextItem extends SlideItem
         }
     }
 
+    //Get the bounding box of the item
     @Override
     public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, MyStyle style, float scale)
     {

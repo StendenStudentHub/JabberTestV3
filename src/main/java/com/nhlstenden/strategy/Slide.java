@@ -82,6 +82,8 @@ public class Slide
         this.title = new TextItem(0, title);
     }
 
+    //Add the slides, the level is the type of color > see styleDefault
+    //Add the message.
     public void append(int level, String message)
     {
         append(Objects.requireNonNull(SlideItemFactory.GetSlideItemFactory("text")).CreateSlideItem(level, message));
