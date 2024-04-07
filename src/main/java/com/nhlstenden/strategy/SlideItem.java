@@ -24,7 +24,8 @@ public abstract class SlideItem
         subItems.add(subItem);
     }
 
-    public int getSubItems() {
+    public int getSubItems()
+    {
         return this.subItems.size();
     }
 

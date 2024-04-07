@@ -16,7 +16,7 @@ public class StyleDefault extends StyleStrategy
         return (javax.swing.text.Style) myStyles[level];
     }
 
-    private void styleDefault()
+    public void styleDefault()
     {
         //Set the default style
         myStyles = new MyStyle[5];
@@ -27,6 +27,7 @@ public class StyleDefault extends StyleStrategy
         myStyles[3] = new MyStyle(70, Color.black, 30, 10);
         myStyles[4] = new MyStyle(90, Color.black, 24, 10);
     }
+
     @Override
     public void setStyle(SlideItem item)
     {

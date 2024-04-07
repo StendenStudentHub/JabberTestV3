@@ -20,11 +20,6 @@ public class MyStyle
         this.font = new Font(FONT_NAME, Font.BOLD, fontSize = points);
     }
 
-    public Font getfont(float scale)
-    {
-        return font.deriveFont(fontSize * scale);
-    }
-
     public static Font getFont(float scale)
     {
         return font.deriveFont(fontSize * scale);
