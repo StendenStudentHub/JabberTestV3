@@ -21,10 +21,19 @@ tasks.test {
     useJUnitPlatform()
 }
 
+jacoco {
+    toolVersion = "0.8.7"
+}
+
+tasks.named("jacocoTestReport") {
+    dependsOn("test")
+}
+
 sonar {
     properties {
         property("sonar.projectKey", "StendenStudentHub_JabberTestV3")
         property("sonar.organization", "stendenstudenthub")
         property("sonar.host.url", "https://sonarcloud.io")
+        property("sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml")
     }
 }
