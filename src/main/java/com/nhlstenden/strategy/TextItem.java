@@ -9,9 +9,8 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.ImageObserver;
 import java.text.AttributedString;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import javax.swing.text.Style;
+
 
 public class TextItem extends SlideItem
 {
@@ -40,7 +39,7 @@ public class TextItem extends SlideItem
 
     public List<TextLayout> getLayouts(Graphics graphics, MyStyle style,float scale)
     {
-        List<TextLayout> layouts = new ArrayList<TextLayout>();
+        List<TextLayout> layouts = new ArrayList<>();
         AttributedString attributedString = getAttributedString(scale);
         Graphics2D graphics2D = (Graphics2D) graphics;
         FontRenderContext fontRenderContext = graphics2D.getFontRenderContext();
@@ -80,23 +79,24 @@ public class TextItem extends SlideItem
     public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, MyStyle style, float scale)
     {
         List<TextLayout> layouts = getLayouts(graphics, style, scale);
-        int xsize = 0, ysize = (int) (style.getLeading() * scale);
+        int xSize = 0,
+        ySize = (int) (style.getLeading() * scale);
 
         for (TextLayout layout : layouts)
         {
             Rectangle2D bounds = layout.getBounds();
 
-            if (bounds.getWidth() > xsize)
+            if (bounds.getWidth() > xSize)
             {
-                xsize = (int) bounds.getWidth();
+                xSize = (int) bounds.getWidth();
             }
             if (bounds.getHeight() > 0)
             {
-                ysize += (int) bounds.getHeight();
+                ySize += (int) bounds.getHeight();
             }
-            ysize += (int) (layout.getLeading() + layout.getDescent());
+            ySize += (int) (layout.getLeading() + layout.getDescent());
         }
 
-        return new Rectangle((int) (style.getIndent() * scale), 0, xsize, ysize);
+        return new Rectangle((int) (style.getIndent() * scale), 0, xSize, ySize);
     }
 }

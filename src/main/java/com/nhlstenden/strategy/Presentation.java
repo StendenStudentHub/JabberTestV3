@@ -22,7 +22,7 @@ public class Presentation
 	{
 		this.showTitle = "";
 		this.currentSlideNumber = 0;
-		this.showList = new ArrayList<Slide>();
+		this.showList = new ArrayList<>();
 	}
 
 	public int getSize()
@@ -51,7 +51,7 @@ public class Presentation
 
 	public void clear()
 	{
-		this.showList = new ArrayList<Slide>();
+		this.showList = new ArrayList<>();
 		setSlideNumber(0);
 	}
 	public void append(com.nhlstenden.strategy.Slide slide)
