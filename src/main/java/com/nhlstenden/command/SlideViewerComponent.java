@@ -9,9 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.ImageObserver;
 
-public class SlideViewerComponent
+public class SlideViewerComponent extends JPanel
 {
-    private static final long serialVersionUID = 277L;
     private static final Color BACKGROUND_COLOR = Color.white;
     private static final Color FONT_COLOR = Color.black;
     private static final String FONT_NAME = "Dialog";
@@ -20,7 +19,7 @@ public class SlideViewerComponent
     private static final int X_POSITION = 1100;
     private static final int Y_POSITION = 20;
     private Font labelFont = null;
-    private Frame frame;
+    private final Frame frame;
     private Presentation presentation;
     private Slide slide;
 

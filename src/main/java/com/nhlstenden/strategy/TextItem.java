@@ -14,9 +14,7 @@ import java.util.List;
 
 public class TextItem extends SlideItem
 {
-    private String text;
-    private int level;
-    private static final String EMPTY_TEXT = "NO TEXT GIVEN";
+    private final String text;
 
     public TextItem(int level, String title)
     {
@@ -61,7 +59,7 @@ public class TextItem extends SlideItem
     @Override
     public void draw(int x, int y, float scale, Graphics graphics, MyStyle style, ImageObserver imageObserver)
     {
-        if (text == null || text.length() == 0)
+        if (text == null || text.isEmpty())
         {
             return;
         }

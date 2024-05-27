@@ -5,11 +5,10 @@ import java.awt.*;
 public class MyStyle
 {
     private static final String FONT_NAME = "Helvetica";
-    private int indent;
+    private final int indent;
     private static int fontSize;
-    private int leading;
-    private int points;
-    private Color color;
+    private final int leading;
+    private final Color color;
     private static Font font;
 
     public MyStyle(int indent, Color color, int points, int leading)
@@ -23,11 +22,6 @@ public class MyStyle
     public static Font getFont(float scale)
     {
         return font.deriveFont(fontSize * scale);
-    }
-
-    public void setFontSize(int fontSize)
-    {
-        MyStyle.fontSize = fontSize;
     }
 
     public int getIndent()

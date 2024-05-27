@@ -7,24 +7,20 @@ import java.awt.event.WindowEvent;
 
 public class SlideViewerFrame extends JFrame
 {
-    private static final long SERIAL_VERSION_UID = 3227L;
     private static final String JABBERPOINT_TITLE = "Jabberpoint 1.6 - OU";
     private static final int WIDTH = 1200;
     private static final int HEIGHT = 800;
     private String title;
-    private SlideViewer slideViewer;
-    private CmdFactory cmdFactory;
-    private SlideViewerComponent slideViewerComponent;
+    private final CmdFactory cmdFactory;
 
     public SlideViewerFrame(String title, SlideViewer slideViewer)
     {
         super(title);
         this.title = title;
-        this.slideViewer = slideViewer;
-        this.cmdFactory = new CmdFactory(this, this.slideViewer);
-        this.slideViewerComponent = new SlideViewerComponent(this, this.slideViewer.getPresentation());
-        this.slideViewer.setShowView(this.slideViewerComponent);
-        setWindow(this.slideViewerComponent, this.slideViewer);
+        this.cmdFactory = new CmdFactory(this, slideViewer);
+        SlideViewerComponent slideViewerComponent = new SlideViewerComponent(this, slideViewer.getPresentation());
+        slideViewer.setShowView(slideViewerComponent);
+        setWindow(slideViewerComponent, slideViewer);
     }
 
     public void setTitle(String title)
@@ -53,7 +49,7 @@ public class SlideViewerFrame extends JFrame
     }
 
     private void addComponents(SlideViewerComponent slideViewerComponent) {
-        getContentPane().add(this);
+        getContentPane().add((JPanel) slideViewerComponent);
     }
 
     private void addKeyListener() {

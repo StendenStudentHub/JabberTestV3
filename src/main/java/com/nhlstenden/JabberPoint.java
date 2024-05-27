@@ -32,7 +32,7 @@ public class JabberPoint
 	protected static final String JABERR = "Jabberpoint Error ";
 	protected static final String JABVERSION = "Jabberpoint 1.6 - OU version";
 
-	public static void main(String argv[]) {
+	public static void main(String[] argv) {
 
 		Presentation presentation;
 		try
@@ -41,7 +41,7 @@ public class JabberPoint
 			String FileName = argv.length > 0 ? argv[0] : "demo";
 			presentation = AccessorFactory.GetFactory(FileName).CreateReader().Read(FileName);
 			SlideViewer slideViewer = new SlideViewer(presentation);
-			new SlideViewerFrame(JABVERSION, slideViewer);
+			SlideViewerFrame slideViewerFrame = new SlideViewerFrame(JABVERSION, slideViewer);
 
 		}
 		catch (IOException ex)

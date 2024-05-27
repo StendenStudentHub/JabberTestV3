@@ -16,12 +16,12 @@ public class Presentation
 {
 	private String showTitle;
 	private ArrayList<Slide> showList = null;
-	private int currentSlideNumber = 0;
+	private int currentSlideNumber = 1;
 
 	public Presentation()
 	{
 		this.showTitle = "";
-		this.currentSlideNumber = 0;
+		this.currentSlideNumber = 1;
 		this.showList = new ArrayList<>();
 	}
 

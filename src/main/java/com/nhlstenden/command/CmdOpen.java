@@ -16,7 +16,7 @@ public class CmdOpen extends Command
     protected static final String LOADER_ERROR = "Load Error"; // Error message for loading errors
 
     // Parent frame for displaying error messages
-    private Frame parent;
+    private final Frame parent;
 
     // Constructor to initialize the command with a SlideViewer and parent frame
     public CmdOpen(SlideViewer slideViewer, Frame parent)

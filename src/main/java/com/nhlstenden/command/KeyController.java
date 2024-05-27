@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 
 public class KeyController extends KeyAdapter
 {
-    private CmdFactory cmdFactory;
+    private final CmdFactory cmdFactory;
     public KeyController(CmdFactory cmdFactory)
     {
         this.cmdFactory = cmdFactory;

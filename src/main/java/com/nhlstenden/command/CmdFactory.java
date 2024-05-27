@@ -5,8 +5,8 @@ import java.awt.*;
 
 public class CmdFactory
 {
-    private Frame parent;
-    private SlideViewer slideviewer;
+    private final Frame parent;
+    private final SlideViewer slideviewer;
     public CmdFactory(Frame parent, SlideViewer slideviewer)
     {
         this.parent = parent;

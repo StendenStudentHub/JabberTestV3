@@ -1,6 +1,6 @@
 package com.nhlstenden.command;
 
-import com.nhlstenden.facade.AboutBox;
+import com.nhlstenden.strategy.AboutBox;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

@@ -24,7 +24,6 @@ public class XMLReader extends Reader {
 
 	private static final Logger logger = Logger.getLogger(XMLReader.class.getName());
 
-	protected static final String DEFAULT_API_TO_USE = "dom";
 
 	protected static final String SHOWTITLE = "showtitle";
 	protected static final String SLIDETITLE = "title";
@@ -32,11 +31,8 @@ public class XMLReader extends Reader {
 	protected static final String ITEM = "item";
 	protected static final String LEVEL = "level";
 	protected static final String KIND = "kind";
-	protected static final String TEXT = "text";
-	protected static final String IMAGE = "image";
 
 	protected static final String PCE = "Parser Configuration Exception";
-	protected static final String UNKNOWNTYPE = "Unknown Element type";
 	protected static final String NFE = "Number Format Exception";
 
 	@Override

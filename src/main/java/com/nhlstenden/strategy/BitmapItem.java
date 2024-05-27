@@ -14,7 +14,7 @@ public class BitmapItem extends SlideItem
 {
     private static final Logger logger = Logger.getLogger(BitmapItem.class.getName());
 
-    private String imageName;
+    private final String imageName;
     private BufferedImage bufferedImage;
     protected static final String FILE = "Bestand";
     protected static final String ERROR_NOT_FOUND = "NOT FOUND";

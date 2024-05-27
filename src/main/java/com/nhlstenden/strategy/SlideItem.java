@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public abstract class SlideItem
 {
-    private int level;
+    private final int level;
     protected List<SlideItem> subItems;
     protected Style itemStyle;
     protected StyleStrategy styleStrategy;

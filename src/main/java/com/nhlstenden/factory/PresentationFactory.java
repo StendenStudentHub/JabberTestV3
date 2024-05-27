@@ -14,11 +14,8 @@ public abstract class PresentationFactory
 
 	public static PresentationFactory GetFactory(SupportedPresentationTypes presentationType)
 	{
-		if (Objects.requireNonNull(presentationType) == SupportedPresentationTypes.REGULARPRESENTATION)
-		{
-			return new RegularPresentationFactory();
-		}
-		return new RegularPresentationFactory();
+        Objects.requireNonNull(presentationType);
+        return new RegularPresentationFactory();
 	}
 
 	public abstract Presentation CreatePresentation();

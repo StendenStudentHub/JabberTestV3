@@ -14,11 +14,8 @@ public abstract class SlideFactory
 
 	public static SlideFactory GetFactory(SupportedSlideTypes slideType)
 	{
-		if (Objects.requireNonNull(slideType) == SupportedSlideTypes.ITEMSLIDE)
-		{
-			return new ItemSlideFactory();
-		}
-		return new ItemSlideFactory();
+        Objects.requireNonNull(slideType);
+        return new ItemSlideFactory();
 	}
 
 	public abstract Slide CreateSLide();

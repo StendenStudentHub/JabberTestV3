@@ -1,5 +1,6 @@
 package com.nhlstenden.facade;
 
+import com.nhlstenden.strategy.AboutBox;
 import org.junit.jupiter.api.Test;
 import org.powermock.api.mockito.PowerMockito;
 

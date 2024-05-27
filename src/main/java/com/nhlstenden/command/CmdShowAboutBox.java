@@ -1,12 +1,12 @@
 package com.nhlstenden.command;
 
-import com.nhlstenden.facade.AboutBox;
+import com.nhlstenden.strategy.AboutBox;
 
 import java.awt.*;
 
 public class CmdShowAboutBox extends Command
 {
-    private Frame parent;
+    private final Frame parent;
     public CmdShowAboutBox(SlideViewer slideViewer, Frame parent)
     {
         super(slideViewer);
