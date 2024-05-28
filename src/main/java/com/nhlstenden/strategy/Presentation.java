@@ -15,8 +15,8 @@ import java.util.ArrayList;
 public class Presentation
 {
 	private String showTitle;
-	private ArrayList<Slide> showList = null;
-	private int currentSlideNumber = 1;
+	private ArrayList<Slide> showList;
+	private int currentSlideNumber ;
 
 	public Presentation()
 	{
@@ -67,7 +67,7 @@ public class Presentation
 		{
 			return null;
 		}
-		return this.showList.get(number);
+		return (Slide) this.showList.get(number);
 	}
 
 	public Slide getCurrentSlide()

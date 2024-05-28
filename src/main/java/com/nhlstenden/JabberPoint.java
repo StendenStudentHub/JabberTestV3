@@ -1,9 +1,9 @@
 package com.nhlstenden;
 
+import com.nhlstenden.strategy.Presentation;
 import com.nhlstenden.command.SlideViewer;
 import com.nhlstenden.command.SlideViewerFrame;
 import com.nhlstenden.factory.AccessorFactory;
-import com.nhlstenden.strategy.Presentation;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -16,13 +16,7 @@ import java.io.IOException;
  * of the software constitutes acceptance of the terms in the COPYRIGHT.txt
  * file.
  * </p>
- * 
- * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
- * @version 1.1 2002/12/17 Gert Florijn
- * @version 1.2 2003/11/19 Sylvia Stuurman
- * @version 1.3 2004/08/17 Sylvia Stuurman
- * @version 1.4 2007/07/16 Sylvia Stuurman
- * @version 1.5 2010/03/03 Sylvia Stuurman
+ *
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
@@ -32,21 +26,34 @@ public class JabberPoint
 	protected static final String JABERR = "Jabberpoint Error ";
 	protected static final String JABVERSION = "Jabberpoint 1.6 - OU version";
 
-	public static void main(String[] argv) {
+	public static void main(String[] argv)
+	{
+		SwingUtilities.invokeLater(() -> {
+			Presentation presentation;
+			try
+			{
+				// Check if argv length is greater than 0, if zero we want to load the demo.
+				String fileName = argv.length > 0 ? argv[0] : "demo";
+				System.out.println("Loading presentation from: " + fileName); // Debug print
+				presentation = AccessorFactory.GetFactory(fileName).CreateReader().Read(fileName);
 
-		Presentation presentation;
-		try
-		{
-			// check if arg v is 0 if zero we know we want to load the demo.
-			String FileName = argv.length > 0 ? argv[0] : "demo";
-			presentation = AccessorFactory.GetFactory(FileName).CreateReader().Read(FileName);
-			SlideViewer slideViewer = new SlideViewer(presentation);
-			SlideViewerFrame slideViewerFrame = new SlideViewerFrame(JABVERSION, slideViewer);
+				SlideViewer slideViewer = new SlideViewer(presentation);
+				SlideViewerFrame slideViewerFrame = new SlideViewerFrame(JABVERSION, slideViewer);
 
-		}
-		catch (IOException ex)
-		{
-			JOptionPane.showMessageDialog(null, IOERR + ex, JABERR, JOptionPane.ERROR_MESSAGE);
-		}
+				slideViewerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				slideViewerFrame.setSize(800, 600); // Set an appropriate size for the frame
+				slideViewerFrame.setVisible(true);
+
+				// Revalidate and repaint to ensure the components are displayed
+				slideViewerFrame.revalidate();
+				slideViewerFrame.repaint();
+
+				System.out.println("Presentation loaded and viewer displayed."); // Debug print
+			}
+			catch (IOException ex)
+			{
+				JOptionPane.showMessageDialog(null, IOERR + ex, JABERR, JOptionPane.ERROR_MESSAGE);
+			}
+		});
 	}
 }
