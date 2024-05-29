@@ -16,13 +16,15 @@ public class Presentation
 {
 	private String showTitle;
 	private ArrayList<Slide> showList;
+	private Slide currentSlide;
 	private int currentSlideNumber ;
 
 	public Presentation()
 	{
 		this.showTitle = "";
-		this.currentSlideNumber = 1;
+		this.currentSlideNumber = 0;
 		this.showList = new ArrayList<>();
+		this.currentSlide = new Slide();
 	}
 
 	public int getSize()
@@ -63,16 +65,12 @@ public class Presentation
 	//Get slide if the given number is not zero and not greater than the size
 	public Slide getSlide(int number)
 	{
-		if (number < 0 || number >= getSize())
-		{
-			return null;
-		}
-		return (Slide) this.showList.get(number);
+		return this.currentSlide;
 	}
 
 	public Slide getCurrentSlide()
 	{
-		return getSlide(currentSlideNumber);
+		return this.currentSlide;
 	}
 
 	public void setCurrentSlideNumber(int currentSlideNumber)
