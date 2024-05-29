@@ -4,6 +4,8 @@ import com.nhlstenden.strategy.Presentation;
 import com.nhlstenden.strategy.Slide;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -14,9 +16,18 @@ public class GeneratePresentationTest
     void generatePresentation_ShouldCreatePresentationWithTitleAndSlides_WhenValidParametersProvided() {
         // Arrange
         String title = "My Presentation";
-        int[] levels = {1, 2, 1};
-        String[] slideTwoTitles = {"Slide 1", "Slide 2", "Slide 3"};
-        String[] slideTwoTexts = {"Text 1", "Text 2", "Text 3"};
+        ArrayList<Integer> levels = new ArrayList<Integer>();
+        levels.add(4);
+        levels.add(3);
+        levels.add(9);
+        ArrayList<String> slideTwoTitles = new ArrayList<String>();
+        slideTwoTitles.add("slide 1");
+        slideTwoTitles.add("slide 2");
+        slideTwoTitles.add("slide 3");
+        ArrayList<String> slideTwoTexts = new ArrayList<String>();
+        slideTwoTexts.add("text 1");
+        slideTwoTexts.add("text 2");
+        slideTwoTexts.add("text 3");
 
         // Act
         Presentation presentation = GeneratePresentation.generatePresentation(title, levels, slideTwoTitles, slideTwoTexts);
@@ -24,16 +35,16 @@ public class GeneratePresentationTest
         // Assert
         assertNotNull(presentation);
         assertEquals(title, presentation.getTitle());
-        assertEquals(slideTwoTitles.length, presentation.getSize());
+        assertEquals(slideTwoTitles.size(), presentation.getSize());
 
-        for (int i = 0; i < slideTwoTitles.length; i++)
+        for (int i = 0; i < slideTwoTitles.size(); i++)
         {
             Slide slide = presentation.getSlide(i);
             assertNotNull(slide);
-            assertEquals(slideTwoTitles[i], slide.getTitle());
+            assertEquals(slideTwoTitles.get(i), slide.getTitle());
             assertEquals(1, slide.getSize());
-            assertEquals(levels[i], slide.getSlideItem(0).getLevel());
-            assertEquals(slideTwoTexts[i], slide.getSlideItem(0).getText());
+            assertEquals(levels.get(i), slide.getSlideItem(0).getLevel());
+            assertEquals(slideTwoTexts.get(i), slide.getSlideItem(0).getText());
         }
     }
 
@@ -42,9 +53,9 @@ public class GeneratePresentationTest
     {
         // Arrange
         String title = "Empty Presentation";
-        int[] levels = {};
-        String[] slideTwoTitles = {};
-        String[] slideTwoTexts = {};
+        ArrayList<Integer> levels = new ArrayList<Integer>();
+        ArrayList<String> slideTwoTitles = new ArrayList<String>();
+        ArrayList<String> slideTwoTexts = new ArrayList<String>();
 
         // Act
         Presentation presentation = GeneratePresentation.generatePresentation(title, levels, slideTwoTitles, slideTwoTexts);

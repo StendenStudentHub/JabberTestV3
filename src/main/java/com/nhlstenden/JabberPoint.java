@@ -31,8 +31,6 @@ public class JabberPoint
 
 	public static void main(String[] argv)
 	{
-
-		//SwingUtilities.invokeLater(() -> {
 			Presentation presentation = new Presentation();
 			SlideViewer slideViewer = new SlideViewer(presentation);
 			new SlideViewerFrame(JABVERSION, slideViewer);
@@ -41,24 +39,24 @@ public class JabberPoint
 				// Check if argv length is greater than 0, if zero we want to load the demo.
 				if(argv.length == 0)
 				{
+					System.out.println("length is zero");
 					String fileName = "dump.xml";
 					AccessorFactory.GetFactory(fileName).CreateReader().Read(fileName);
 				}
 				else
 				{
+					System.out.println("length is more than zero");
 					String fileDemoName = "test.xml";
 					XMLAccessorFactory.GetFactory(fileDemoName).CreateReader().Read(fileDemoName);
 				}
 
 				presentation.setSlideNumber(0);
-
-				System.out.println("Presentation loaded and viewer displayed."); // Debug print
 				
 			}
 			catch (IOException ex)
 			{
 				JOptionPane.showMessageDialog(null, IOERR + ex, JABERR, JOptionPane.ERROR_MESSAGE);
 			}
-		}
 	}
+}
 

@@ -13,7 +13,7 @@ public class MenuController extends MenuBar
     protected static final String GO_TO = "Go to"; // Menu label for Go to
     protected static final String HELP = "Help"; // Menu label for Help
     protected static final String NEW = "New"; // Menu label for New
-    protected static final String NEXT = "Next"; // Menu label for Next
+    protected static final String NEXT = "Next slide"; // Menu label for Next
     protected static final String OPEN = "Open"; // Menu label for Open
     protected static final String PREVIOUS = "Previous slide"; // Menu label for Previous slide
     protected static final String SAVE = "Save"; // Menu label for Save
@@ -64,10 +64,7 @@ public class MenuController extends MenuBar
         viewMenu.add(createMenuItem(NEXT, cmdFactory::createNextSlideCMD));
         viewMenu.add(createMenuItem(PREVIOUS, cmdFactory::createPreviousSlideCMD));
         viewMenu.add(createMenuItem(GO_TO, cmdFactory::createSlideByNumber));
-        viewMenu.add(createMenuItem(NEXT_ITEM, cmdFactory::createNextItemCMD));
-        viewMenu.add(createMenuItem(PREVIOUS_ITEM, cmdFactory::createPreviousItemCMD));
-        viewMenu.add(createMenuItem(ALL_ITEM, cmdFactory::createShowAllOrNextCMD));
-        viewMenu.add(createMenuItem(CLEAR_ITEMS, cmdFactory::createClearItemsOrBackCMD));
+        viewMenu.addSeparator();
         viewMenu.add(createMenuItem(TOGGLE, cmdFactory::createToggleItemsCMD));
 
         return viewMenu;
@@ -78,7 +75,7 @@ public class MenuController extends MenuBar
     {
         Menu helpMenu = new Menu(HELP);
         helpMenu.add(createMenuItem(ABOUT, cmdFactory::createShowAboutBoxCMD));
-
+        helpMenu.addSeparator();
         return helpMenu;
     }
 
