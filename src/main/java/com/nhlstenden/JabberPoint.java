@@ -34,21 +34,23 @@ public class JabberPoint
 
 		//SwingUtilities.invokeLater(() -> {
 			Presentation presentation = new Presentation();
+			SlideViewer slideViewer = new SlideViewer(presentation);
+			new SlideViewerFrame(JABVERSION, slideViewer);
 			try
 			{
-				SlideViewer slideViewer = new SlideViewer(presentation);
-				SlideViewerFrame slideViewerFrame = new SlideViewerFrame(JABVERSION, slideViewer);
 				// Check if argv length is greater than 0, if zero we want to load the demo.
-				String fileName = argv.length > 0 ? argv[0] : "dump.xml";
-				System.out.println("Loading presentation from: " + fileName); // Debug print
-				presentation = AccessorFactory.GetFactory(fileName).CreateReader().Read(fileName);
+				if(argv.length == 0)
+				{
+					String fileName = "dump.xml";
+					AccessorFactory.GetFactory(fileName).CreateReader().Read(fileName);
+				}
+				else
+				{
+					String fileDemoName = "test.xml";
+					XMLAccessorFactory.GetFactory(fileDemoName).CreateReader().Read(fileDemoName);
+				}
 
-				slideViewerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				slideViewerFrame.setSize(800, 600); // Set an appropriate size for the frame
-				slideViewerFrame.setVisible(true);
-				// Revalidate and repaint to ensure the components are displayed
-				slideViewerFrame.revalidate();
-				slideViewerFrame.repaint();
+				presentation.setSlideNumber(0);
 
 				System.out.println("Presentation loaded and viewer displayed."); // Debug print
 				
