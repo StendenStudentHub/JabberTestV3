@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public abstract class SlideFactory
 {
-
+	//Enums
 	public enum SupportedSlideTypes
 	{
 		ITEMSLIDE

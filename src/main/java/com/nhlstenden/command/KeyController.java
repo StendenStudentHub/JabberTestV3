@@ -5,12 +5,15 @@ import java.awt.event.KeyEvent;
 
 public class KeyController extends KeyAdapter
 {
+    //Variables
     private final CmdFactory cmdFactory;
+    //Constructor
     public KeyController(CmdFactory cmdFactory)
     {
         this.cmdFactory = cmdFactory;
     }
 
+    //This method will help to see what event will happen by the pressed key
     public void keyPressed(KeyEvent keyEvent)
     {
         Command selectedCommand = switch (keyEvent.getKeyCode())

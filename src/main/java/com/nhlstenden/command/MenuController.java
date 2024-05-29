@@ -7,6 +7,7 @@ import java.util.function.Supplier;
 
 public class MenuController extends MenuBar
 {
+    //Constants
     protected static final String ABOUT = "About"; // Menu label for About
     protected static final String FILE = "File"; // Menu label for File
     protected static final String EXIT = "Exit"; // Menu label for Exit
@@ -24,6 +25,7 @@ public class MenuController extends MenuBar
     protected static final String CLEAR_ITEMS = "Clear items"; // Menu label for Clear items
     protected static final String TOGGLE = "Toggle item navigation"; // Menu label for Toggle item navigation
 
+    //Variables
     private final CmdFactory cmdFactory; // Command factory for creating commands
 
     // Constructor to initialize the MenuController with a frame, SlideViewer, and CmdFactory

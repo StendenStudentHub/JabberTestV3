@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 public class DemoWriter extends Writer
 {
-
+	//Constants
 	private static final Logger logger = Logger.getLogger(DemoWriter.class.getName());
 
 	@Override

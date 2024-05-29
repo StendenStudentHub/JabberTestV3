@@ -11,10 +11,12 @@ import java.io.IOException;
 // Command to open and load a presentation from a file
 public class CmdOpen extends Command
 {
-    protected static final String TEST_FILE = "test.xml"; // File to be opened
+    //Constants
+    protected static final String TEST_FILE = "src/main/java/com/nhlstenden/resources/test.xml"; // File to be opened
     protected static final String IO_EXCEPTION = "Io Exception"; // Exception message for IO errors
     protected static final String LOADER_ERROR = "Load Error"; // Error message for loading errors
 
+    //Variables
     // Parent frame for displaying error messages
     private final Frame parent;
 

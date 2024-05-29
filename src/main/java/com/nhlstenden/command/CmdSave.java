@@ -11,10 +11,12 @@ import java.io.IOException;
 // Command to save the presentation to a file
 public class CmdSave extends Command
 {
+    //Constants
     protected static final String SAVE_FILE = "dump.xml"; // File to save the presentation
     protected static final String IO_EXCEPTION = "IO Exception"; // Exception message for IO errors
     protected static final String SAVE_ERROR = "Save Error"; // Error message for saving errors
 
+    //Variables
     private Frame parent; // Parent frame for displaying error messages
     private Presentation presentation; // Presentation to be saved
 

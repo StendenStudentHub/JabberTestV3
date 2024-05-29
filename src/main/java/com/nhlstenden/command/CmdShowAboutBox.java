@@ -6,7 +6,9 @@ import java.awt.*;
 
 public class CmdShowAboutBox extends Command
 {
+    //Variables
     private final Frame parent;
+    //Constructor
     public CmdShowAboutBox(SlideViewer slideViewer, Frame parent)
     {
         super(slideViewer);
