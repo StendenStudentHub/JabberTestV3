@@ -10,6 +10,10 @@ import com.nhlstenden.factory.AccessorFactory;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import static com.nhlstenden.facade.GeneratePresentation.generatePresentation;
 
 /**
  * JabberPoint Main Programma
@@ -39,9 +43,16 @@ public class JabberPoint
 				// Check if argv length is greater than 0, if zero we want to load the demo.
 				if(argv.length == 0)
 				{
-					System.out.println("length is zero");
-					String fileName = "dump.xml";
-					AccessorFactory.GetFactory(fileName).CreateReader().Read(fileName);
+					//System.out.println("length is zero");
+					//String fileName = "dump.xml";
+					//AccessorFactory.GetFactory(fileName).CreateReader().Read(fileName);
+
+					ArrayList<Integer> levels = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4));
+					ArrayList<String> slideTwoTitles = new ArrayList<String>(Arrays.asList("title 1", "title 2", "title 3"));
+					ArrayList<String> slideTwoTexts = new ArrayList<String>(Arrays.asList("text 1", "text 2", "text 3"));
+
+					Presentation generatedPresentation = generatePresentation(JABVERSION, levels, slideTwoTitles, slideTwoTexts);
+					AccessorFactory.GetFactory(generatedPresentation).CreateReader().Read(generatedPresentation);
 				}
 				else
 				{
