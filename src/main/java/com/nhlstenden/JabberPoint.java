@@ -1,11 +1,10 @@
 package com.nhlstenden;
 
-import com.nhlstenden.factory.XMLAccessorFactory;
+import com.nhlstenden.factory.*;
 import com.nhlstenden.strategy.MyStyle;
 import com.nhlstenden.strategy.Presentation;
 import com.nhlstenden.command.SlideViewer;
 import com.nhlstenden.command.SlideViewerFrame;
-import com.nhlstenden.factory.AccessorFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,34 +34,13 @@ public class JabberPoint
 
 	public static void main(String[] argv)
 	{
-			Presentation presentation = new Presentation();
-			SlideViewer slideViewer = new SlideViewer(presentation);
-			new SlideViewerFrame(JABVERSION, slideViewer);
+			Presentation presentation;
 			try
 			{
-				// Check if argv length is greater than 0, if zero we want to load the demo.
-				if(argv.length == 0)
-				{
-					//System.out.println("length is zero");
-					//String fileName = "dump.xml";
-					//AccessorFactory.GetFactory(fileName).CreateReader().Read(fileName);
-
-					ArrayList<Integer> levels = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4));
-					ArrayList<String> slideTwoTitles = new ArrayList<String>(Arrays.asList("title 1", "title 2", "title 3"));
-					ArrayList<String> slideTwoTexts = new ArrayList<String>(Arrays.asList("text 1", "text 2", "text 3"));
-
-					Presentation generatedPresentation = generatePresentation(JABVERSION, levels, slideTwoTitles, slideTwoTexts);
-					AccessorFactory.GetFactory(generatedPresentation).CreateReader().Read(generatedPresentation);
-				}
-				else
-				{
-					System.out.println("length is more than zero");
-					String fileDemoName = "test.xml";
-					XMLAccessorFactory.GetFactory(fileDemoName).CreateReader().Read(fileDemoName);
-				}
-
-				presentation.setSlideNumber(0);
-				
+				String fileName = argv.length > 0 ? argv[0] : "demo";
+				presentation = AccessorFactory.GetFactory(fileName).CreateReader().Read(fileName);
+				SlideViewer slideViewer = new SlideViewer(presentation);
+				new SlideViewerFrame(JABVERSION, slideViewer);
 			}
 			catch (IOException ex)
 			{

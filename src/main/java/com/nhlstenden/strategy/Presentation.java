@@ -25,6 +25,7 @@ public class Presentation
 		this.currentSlideNumber = 0;
 		this.showList = new ArrayList<>();
 		this.currentSlide = new Slide();
+		this.clear();
 	}
 
 	public int getSize()
