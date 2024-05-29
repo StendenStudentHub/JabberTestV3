@@ -25,6 +25,7 @@ public class SlideViewerComponent extends JPanel
 
     public SlideViewerComponent(JFrame frame, Presentation presentation)
     {
+        setBackground(BACKGROUND_COLOR);
         this.frame = frame;
         this.presentation = presentation;
         this.slide = null;
