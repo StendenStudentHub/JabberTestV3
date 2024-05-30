@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 
 public class XMLReader extends Reader {
 
+	//Constants
 	private static final Logger logger = Logger.getLogger(XMLReader.class.getName());
 
 

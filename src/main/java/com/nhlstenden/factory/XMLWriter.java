@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 
 public class XMLWriter extends Writer
 {
+	//Constants
 
 	private static final Logger logger = Logger.getLogger(XMLWriter.class.getName());
 

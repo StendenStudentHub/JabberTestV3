@@ -5,6 +5,7 @@ import java.io.IOException;
 // Abstract class representing a command
 public abstract class Command
 {
+    //Variables
     private SlideViewer slideViewer; // Reference to the SlideViewer
 
     // Constructor to initialize the command with a SlideViewer

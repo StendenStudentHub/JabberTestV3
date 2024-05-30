@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public abstract class PresentationFactory
 {
-
+	//Enums
 	public enum SupportedPresentationTypes
 	{
 		REGULARPRESENTATION

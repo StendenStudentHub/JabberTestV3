@@ -2,6 +2,7 @@ package com.nhlstenden.factory;
 
 public abstract class AccessorFactory
 {
+	//Static constructor for checking the fileExtension
 	public static AccessorFactory GetFactory(String fileName)
 	{
 		// check if we provided a file extension if not we just assume its the demo

@@ -11,6 +11,7 @@ import java.awt.image.ImageObserver;
 
 public class SlideViewerComponent extends JPanel
 {
+    //Constants
     private static final Color BACKGROUND_COLOR = Color.white;
     private static final Color FONT_COLOR = Color.black;
     private static final String FONT_NAME = "Dialog";
@@ -18,20 +19,28 @@ public class SlideViewerComponent extends JPanel
     private static final int FONT_HEIGHT = 10;
     private static final int X_POSITION = 1100;
     private static final int Y_POSITION = 20;
+    //Variables
     private Font labelFont = null;
     private final Frame frame;
     private Presentation presentation;
     private Slide slide;
 
+    //Constructor
     public SlideViewerComponent(JFrame frame, Presentation presentation)
     {
-        setBackground(BACKGROUND_COLOR);
+        setBackground(Color.RED);
         this.frame = frame;
         this.presentation = presentation;
-        this.slide = null;
+        this.slide = this.presentation.getCurrentSlide();
         this.labelFont = new Font(FONT_NAME, FONT_STYLE, FONT_HEIGHT);
     }
 
+    //Getters and setters
+
+    public Presentation getPresentation()
+    {
+        return this.presentation;
+    }
     public void setPresentation(Presentation presentation)
     {
         this.presentation = presentation;

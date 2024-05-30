@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 public abstract class SlideItemFactory
 {
-
+	//Constants
 	private static final Logger logger = Logger.getLogger(SlideItemFactory.class.getName());
 
 	public static SlideItemFactory GetSlideItemFactory(String itemType)

@@ -7,12 +7,15 @@ import java.awt.event.WindowEvent;
 
 public class SlideViewerFrame extends JFrame
 {
+    //Constants
     private static final String JABBERPOINT_TITLE = "Jabberpoint 1.6 - OU";
     private static final int WIDTH = 1200;
     private static final int HEIGHT = 800;
+    //Variables
     private String title;
     private final CmdFactory cmdFactory;
 
+    //Constructor
     public SlideViewerFrame(String title, SlideViewer slideViewer)
     {
         super(title);
@@ -23,6 +26,11 @@ public class SlideViewerFrame extends JFrame
         setWindow(slideViewerComponent, slideViewer);
     }
 
+    //Getters and Setters
+    public String getTitle()
+    {
+        return this.title;
+    }
     public void setTitle(String title)
     {
         this.title = title;
@@ -40,6 +48,8 @@ public class SlideViewerFrame extends JFrame
     }
 
     //All the different methods for the setWindow.
+    //So the method setWindow will not do everything.
+    //Single responsibility
     private void addCloseWindowListener() {
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {

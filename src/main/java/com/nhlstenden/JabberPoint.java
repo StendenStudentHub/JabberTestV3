@@ -1,18 +1,12 @@
 package com.nhlstenden;
 
 import com.nhlstenden.factory.*;
-import com.nhlstenden.strategy.MyStyle;
 import com.nhlstenden.strategy.Presentation;
 import com.nhlstenden.command.SlideViewer;
 import com.nhlstenden.command.SlideViewerFrame;
 
 import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import static com.nhlstenden.facade.GeneratePresentation.generatePresentation;
 
 /**
  * JabberPoint Main Programma
@@ -28,19 +22,30 @@ import static com.nhlstenden.facade.GeneratePresentation.generatePresentation;
 
 public class JabberPoint
 {
+	//Constants
 	protected static final String IOERR = "IO Error: ";
 	protected static final String JABERR = "Jabberpoint Error ";
 	protected static final String JABVERSION = "Jabberpoint 1.6 - OU version";
 
+	/*The main program */
 	public static void main(String[] argv)
 	{
 			Presentation presentation;
 			try
 			{
-				String fileName = argv.length > 0 ? argv[0] : "demo";
-				presentation = AccessorFactory.GetFactory(fileName).CreateReader().Read(fileName);
-				SlideViewer slideViewer = new SlideViewer(presentation);
-				new SlideViewerFrame(JABVERSION, slideViewer);
+				//Check if the argv is corresponding zero
+				if(argv.length == 0)
+				{
+					//Setup the fileName and load the presentation
+					String fileName = "src/main/java/com/nhlstenden/resources/test.xml";
+					presentation = AccessorFactory.GetFactory(fileName).CreateReader().Read(fileName);
+					SlideViewer slideViewer = new SlideViewer(presentation);
+					new SlideViewerFrame(JABVERSION, slideViewer);
+				}
+				else
+				{
+					new XMLReader().Read("src/main/java/com/nhlstenden/resources/test.xml");
+				}
 			}
 			catch (IOException ex)
 			{

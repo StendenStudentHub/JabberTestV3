@@ -9,6 +9,7 @@ import java.awt.*;
 // Class responsible for managing the presentation viewing functionality
 public class SlideViewer extends MenuBar
 {
+    //Variables
     private Presentation presentation;
     private SlideViewerComponent slideViewerComponent;
 

@@ -2,7 +2,9 @@ package com.nhlstenden.command;
 
 public class CmdSlideByNumber extends Command
 {
+    //Variables
     private final SlideViewer slideViewer;
+    //Constructor
     public CmdSlideByNumber(SlideViewer slideViewer)
     {
         super(slideViewer);
