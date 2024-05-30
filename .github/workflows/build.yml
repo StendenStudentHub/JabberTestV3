@@ -104,29 +104,38 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew build sonar --info --exclude-task check
-        
+
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/develop' # Deze stap wordt alleen uitgevoerd als de branch develop is
+    needs: quality
+    if: github.ref == 'refs/heads/develop'
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
 
-    - name: Set up Git
-      run: |
-        git config --global user.email "actions@github.com"
-        git config --global user.name "GitHub Actions"
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'zulu'
 
-    - name: Push changes to production branch
-      run: |
-        git checkout -b production
-        git add .
-        git commit -m "Deploy from develop branch"
-        git push origin production
+      - name: Add execute permissions to Gradlew
+        run: chmod +x ./gradlew
 
-    # Als je de code ook van de productiebranch naar de developmentbranch wilt pullen, kun je de onderstaande stappen toevoegen.
-    #- name: Pull changes from production branch
-    #  run: |
-    #    git checkout develop
-    #    git pull origin production
+      - name: Build the Project
+        run: ./gradlew build
+
+      - name: Add SSH key
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Deploy to predefined location
+        env:
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          scp ./build/libs/myapp.jar ${{ env.DEPLOY_USER }}@${{ env.DEPLOY_HOST }}:${{ env.DEPLOY_PATH }}
