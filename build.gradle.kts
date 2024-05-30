@@ -25,16 +25,21 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
     ignoreFailures = true
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+    reports {
+        xml.required.set(true)
+        csv.required.set(false)
+        html.required.set(true)
+        html.outputLocation.set(file("build/reports/jacoco"))
+    }
 }
 
 jacoco {
     toolVersion = "0.8.7"
-}
-
-jacocoTestReport {
-    reports {
-        xml.required = true
-    }
 }
 
 tasks.named("jacocoTestReport") {
