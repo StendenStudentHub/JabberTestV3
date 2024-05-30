@@ -75,7 +75,7 @@ class SlideViewerTest {
         when(presentationMock.getSlideNumber()).thenReturn(1);
 
         // Act
-        slideViewer.prevSlide();
+        slideViewer.previousSlide();
 
         // Assert
         verify(presentationMock).setCurrentSlideNumber(0);
@@ -88,7 +88,7 @@ class SlideViewerTest {
         when(presentationMock.getSlideNumber()).thenReturn(0);
 
         // Act
-        slideViewer.prevSlide();
+        slideViewer.previousSlide();
 
         // Assert
         verify(presentationMock, never()).setCurrentSlideNumber(anyInt());

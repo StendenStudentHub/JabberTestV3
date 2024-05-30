@@ -1,6 +1,5 @@
 package com.nhlstenden.command;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -28,7 +27,7 @@ public class CmdPreviousSlideTest
         cmdPreviousSlide.execute();
 
         // Assert
-        verify(slideViewer, times(1)).prevSlide();
+        verify(slideViewer, times(1)).previousSlide();
         verify(slideViewer, times(1)).updateView();
     }
 
@@ -43,7 +42,7 @@ public class CmdPreviousSlideTest
         cmdPreviousSlide.execute();
 
         // Assert
-        verify(slideViewer, times(3)).prevSlide();
+        verify(slideViewer, times(3)).previousSlide();
         verify(slideViewer, times(3)).updateView();
     }
 }

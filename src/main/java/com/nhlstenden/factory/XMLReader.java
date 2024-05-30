@@ -25,7 +25,6 @@ public class XMLReader extends Reader {
 	//Constants
 	private static final Logger logger = Logger.getLogger(XMLReader.class.getName());
 
-
 	protected static final String SHOWTITLE = "showtitle";
 	protected static final String SLIDETITLE = "title";
 	protected static final String SLIDE = "slide";
@@ -36,6 +35,7 @@ public class XMLReader extends Reader {
 	protected static final String PCE = "Parser Configuration Exception";
 	protected static final String NFE = "Number Format Exception";
 
+	//Constructor
 	@Override
 	public Presentation Read(String fileName) throws IOException
 	{

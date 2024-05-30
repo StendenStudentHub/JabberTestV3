@@ -14,12 +14,12 @@ public class SlideViewer extends MenuBar
     private SlideViewerComponent slideViewerComponent;
 
     // Constructor to initialize the SlideViewer with a presentation
-    public SlideViewer(com.nhlstenden.strategy.Presentation presentation)
+    public SlideViewer(Presentation presentation)
     {
         this.presentation = presentation;
     }
 
-    // Getter method for retrieving the current presentation
+    //Getters and setters
     public Presentation getPresentation()
     {
         return this.presentation;
@@ -37,36 +37,35 @@ public class SlideViewer extends MenuBar
         updateView();
     }
 
-
-    public void prevSlide()
+    //Set slideNumber to previous slide if there are more slides
+    public void previousSlide()
     {
-        //Set slideNumber to previous slide if there are more slides
         if(presentation.getSlideNumber() > 0)
         {
             setSlideNumber(presentation.getSlideNumber() -1);
         }
     }
 
+    //Set slideNumber to the next slide if there are more slides
     public void nextSlide()
     {
-        //Set slideNumber to the next slide if there are more slides
         if(presentation.getSlideNumber() > (presentation.getSize()) - 1)
         {
             setSlideNumber(presentation.getSlideNumber() + 1);
         }
     }
 
+    //Set slideNumber to the given number
     public void goToSlideNumber()
     {
-        //Set slideNumber to the given number
         String page = "Page number?";
         int pageNumber = getIntegerField(page);
         setSlideNumber(pageNumber - 1);
     }
 
+    //Clear the presentation
     public void clear()
     {
-        //Clear the presentation
         if(this.presentation != null)
         {
             presentation.clear();
@@ -74,15 +73,15 @@ public class SlideViewer extends MenuBar
         }
     }
 
+    //Show all items to draw
     public void toggleShowAll()
     {
-        //Show all items to draw
         presentation.getCurrentSlide().toggleDrawAllItems();
     }
 
+    //Go to the next item if there are more items
     public void nextItem()
     {
-        //Go to the next item if there are more items
         Slide currentSlide = presentation.getCurrentSlide();
 
         if(currentSlide.getNumberOfItemsToDraw() < currentSlide.getSize())
@@ -95,9 +94,9 @@ public class SlideViewer extends MenuBar
         }
     }
 
+    //Go to the previous item if there are more than zero items.
     public void previousItem()
     {
-        //Go to the previous item if there are more than zero items.
         Slide currentSlide = presentation.getCurrentSlide();
 
         if(currentSlide.getNumberOfItemsToDraw() > 0 && !currentSlide.isDrawAllItems())
@@ -110,23 +109,23 @@ public class SlideViewer extends MenuBar
         }
     }
 
+    //Look if the slideNumber is greater than zero
     public void isSlideNumberGreaterThanZero()
     {
-        //Look if the slideNumber is greater than zero
         if(presentation.getSlideNumber() > 0)
         {
-            prevSlide();
+            previousSlide();
             showAll();
         }
         else
         {
-            prevSlide();
+            previousSlide();
         }
     }
 
+    //Show all the slides or the next slide
     public void showAllOrNext()
     {
-        //Show all the slides or the next slide
         Slide currentSlide = this.presentation.getCurrentSlide();
 
         if(currentSlide.getNumberOfItemsToDraw() < currentSlide.getSize() - 1)
@@ -139,9 +138,9 @@ public class SlideViewer extends MenuBar
         }
     }
 
+    //Clear all the items or go to previous item
     public void clearItemsOrBack()
     {
-        //Clear all the items or go to previous item
         if(this.presentation.getCurrentSlide().getNumberOfItemsToDraw() > 0)
         {
             clearSlide();
@@ -153,33 +152,37 @@ public class SlideViewer extends MenuBar
         }
     }
 
+    //Look if the drawAllItems is true
     public void isDrawAllItemsTrue()
     {
-        //Look if the method is true
+        //If true go to previous slide methode
         if(this.presentation.getCurrentSlide().isDrawAllItems())
         {
-            prevSlide();
+            previousSlide();
         }
     }
 
+    //Look if the current slide is higher than zero
     public void currentSlideHigherThanZero()
     {
         if(this.presentation.getSlideNumber() > 0)
         {
-            prevSlide();
+            previousSlide();
             showAll();
         }
         else
         {
-            prevSlide();
+            previousSlide();
         }
     }
 
+    //Give exit status to the given parameter
     public void exit(int status)
     {
         System.exit(status);
     }
 
+    //Set the slide number to the given parameter
     public void setSlideNumber(int slideNumber)
     {
         this.presentation.setCurrentSlideNumber(slideNumber);
@@ -195,6 +198,7 @@ public class SlideViewer extends MenuBar
         }
     }
 
+    //Clear the current slide
     private void clearSlide()
     {
         this.presentation.getCurrentSlide().setNumberOfItemsToDraw(0);
@@ -222,9 +226,9 @@ public class SlideViewer extends MenuBar
         }
     }
 
+    //Update the view if slideViewerComponent is not null
     public void updateView()
     {
-        //Update the view if slideViewerComponent is not null
         if(this.slideViewerComponent != null)
         {
             this.slideViewerComponent.update(this.presentation.getTitle(), this.presentation.getCurrentSlide());

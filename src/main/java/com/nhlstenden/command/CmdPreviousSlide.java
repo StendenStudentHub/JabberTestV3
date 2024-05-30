@@ -12,7 +12,7 @@ public class CmdPreviousSlide extends Command
     {
         //Get the slideViewer to show previous slide
         //Update the view after this method
-        this.getSlideViewer().prevSlide();
+        this.getSlideViewer().previousSlide();
         this.getSlideViewer().updateView();
     }
 }

@@ -19,6 +19,7 @@ public class SlideViewerComponent extends JPanel
     private static final int FONT_HEIGHT = 10;
     private static final int X_POSITION = 1100;
     private static final int Y_POSITION = 20;
+
     //Variables
     private Font labelFont = null;
     private final Frame frame;
