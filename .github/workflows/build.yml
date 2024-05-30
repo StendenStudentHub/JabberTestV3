@@ -118,6 +118,9 @@ jobs:
           java-version: 17
           distribution: 'zulu'
 
+      - name: Add execute permissions to Gradlew
+        run: chmod +x ./gradlew
+
       - name: Build the Project
         run: ./gradlew build
 
