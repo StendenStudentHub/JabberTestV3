@@ -25,11 +25,9 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
     ignoreFailures = true
-    finalizedBy(tasks.jacocoTestReport)
 }
 
 tasks.jacocoTestReport {
-    dependsOn(tasks.test)
     reports {
         xml.required.set(true)
         csv.required.set(false)
@@ -42,21 +40,11 @@ jacoco {
     toolVersion = "0.8.7"
 }
 
-tasks.named("jacocoTestReport") {
-    dependsOn("test")
-}
-
-sonar {
+sonarqube {
     properties {
         property("sonar.projectKey", "StendenStudentHub_JabberTestV3")
         property("sonar.organization", "stendenstudenthub")
         property("sonar.host.url", "https://sonarcloud.io")
         property("sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml")
     }
-}
-
-// Customize the build task to not depend on the test task
-tasks.named("build") {
-    dependsOn("assemble")
-    finalizedBy("test")
 }
