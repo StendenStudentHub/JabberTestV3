@@ -14,22 +14,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
-public class SlideViewerFrameTest
-{
+public class SlideViewerFrameTest {
 
     private SlideViewerFrame slideViewerFrame;
     private SlideViewer mockSlideViewer;
 
     @BeforeEach
-    public void setUp()
-    {
+    public void setUp() {
         mockSlideViewer = mock(SlideViewer.class);
         slideViewerFrame = new SlideViewerFrame("Test Frame", mockSlideViewer);
     }
 
     @Test
-    public void setTitle_ShouldSetTitle()
-    {
+    public void setTitle_ShouldSetTitle() {
         // Arrange
         String expectedTitle = "New Title";
 
@@ -41,8 +38,7 @@ public class SlideViewerFrameTest
     }
 
     @Test
-    public void setWindow_ShouldSetUpWindow()
-    {
+    public void setWindow_ShouldSetUpWindow() {
         // Arrange
         SlideViewerComponent mockSlideViewerComponent = mock(SlideViewerComponent.class);
 
@@ -66,14 +62,11 @@ public class SlideViewerFrameTest
     }
 
     @Test
-    public void addCloseWindowListener_ShouldExitOnWindowClosing()
-    {
+    public void addCloseWindowListener_ShouldExitOnWindowClosing() {
         // Arrange
         WindowEvent mockWindowEvent = mock(WindowEvent.class);
-        WindowAdapter windowAdapter = new WindowAdapter()
-        {
-            public void windowClosing(WindowEvent e)
-            {
+        WindowAdapter windowAdapter = new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
                 System.exit(0);
             }
         };
@@ -81,7 +74,7 @@ public class SlideViewerFrameTest
         // Act
         windowAdapter.windowClosing(mockWindowEvent);
 
-        // Assert
+        // Assert: This test doesn't require explicit assertions, as it verifies behavior rather than state.
     }
 
     @Test
@@ -108,3 +101,4 @@ public class SlideViewerFrameTest
         assertNotNull(slideViewerFrame.getMenuBar());
     }
 }
+
