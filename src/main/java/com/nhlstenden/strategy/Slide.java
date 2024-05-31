@@ -98,7 +98,7 @@ public class Slide
         return (SlideItem) items.elementAt(number);
     }
 
-    public Vector<com.nhlstenden.strategy.SlideItem> getSlideItems()
+    public Vector<SlideItem> getSlideItems()
     {
         return this.items;
     }

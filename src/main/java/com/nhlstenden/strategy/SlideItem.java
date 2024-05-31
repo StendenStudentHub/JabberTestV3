@@ -8,17 +8,20 @@ import java.util.ArrayList;
 
 public abstract class SlideItem
 {
+    //Variables
     private final int level;
     protected List<SlideItem> subItems;
     protected Style itemStyle;
     protected StyleStrategy styleStrategy;
 
+    //Constructor
     public SlideItem(int level)
     {
         this.level = level;
         this.subItems = new ArrayList<>(); // Initialize as ArrayList to keep it compatible with existing code
     }
 
+    //Getters and setters
     public void addSlideItem(SlideItem subItem)
     {
         subItems.add(subItem);
