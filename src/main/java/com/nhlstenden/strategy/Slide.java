@@ -7,13 +7,17 @@ import java.util.Vector;
 
 public class Slide
 {
+    //Constants
     public static final int WIDTH = 1200;
     public static final int HEIGHT = 800;
+
+    //Variables
     protected TextItem title;
     protected Vector<SlideItem> items;
     private int numberOfItemsToDraw;
     private boolean drawAllItems;
 
+    //Constructor
     public Slide()
     {
         this.numberOfItemsToDraw = 0;
