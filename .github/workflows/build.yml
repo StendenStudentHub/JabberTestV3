@@ -132,10 +132,10 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
-      - name: Deploy to predefined location
+      - name: Deploy to local machine
         env:
-          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          DEPLOY_USER: Bram
+          DEPLOY_HOST: 192.168.86.83
+          DEPLOY_PATH: C:/Users/Bram/Desktop/jabber-release
         run: |
-          scp ./build/libs/myapp.jar ${{ env.DEPLOY_USER }}@${{ env.DEPLOY_HOST }}:${{ env.DEPLOY_PATH }}
+          scp -r ./build/libs/* ${{ env.DEPLOY_USER }}@${{ env.DEPLOY_HOST }}:${{ env.DEPLOY_PATH }}
