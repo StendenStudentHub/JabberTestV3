@@ -1,9 +1,11 @@
 package com.nhlstenden;
 
 import com.nhlstenden.factory.*;
+import com.nhlstenden.strategy.MyStyle;
 import com.nhlstenden.strategy.Presentation;
 import com.nhlstenden.command.SlideViewer;
 import com.nhlstenden.command.SlideViewerFrame;
+import com.nhlstenden.strategy.StyleDefault;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -31,6 +33,7 @@ public class JabberPoint
 	public static void main(String[] argv)
 	{
 			Presentation presentation;
+			StyleDefault.styleDefault();
 			try
 			{
 				//Check if the argv is corresponding zero

@@ -5,7 +5,7 @@ import java.awt.*;
 public class StyleDefault extends StyleStrategy
 {
     //Variables
-    private MyStyle[] myStyles;
+    private static MyStyle[] myStyles;
 
     private javax.swing.text.Style getStyle(int level)
     {
@@ -18,7 +18,7 @@ public class StyleDefault extends StyleStrategy
     }
 
     //Constructor
-    public void styleDefault()
+    public static void styleDefault()
     {
         //Set the default style
         myStyles = new MyStyle[5];

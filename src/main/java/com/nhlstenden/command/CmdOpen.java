@@ -2,11 +2,14 @@ package com.nhlstenden.command;
 
 import com.nhlstenden.factory.AccessorFactory;
 import com.nhlstenden.factory.Reader;
+import com.nhlstenden.factory.XMLReader;
 import com.nhlstenden.strategy.Presentation;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
 import java.awt.*;
 import java.io.IOException;
+import java.io.File;
 
 // Command to open and load a presentation from a file
 public class CmdOpen extends Command
@@ -31,27 +34,54 @@ public class CmdOpen extends Command
     @Override
     public void execute()
     {
-        // Clears the current presentation in the SlideViewer
-        getSlideViewer().clear();
-
-        // Creates a reader using the AccessorFactory for reading the file
-        Reader reader = AccessorFactory.GetFactory(TEST_FILE).CreateReader();
+        //Create the fileChooser and open the file dialog
+        JFileChooser fileChooser = createJFileChooser();
+        fileChooser.showOpenDialog(this.parent);
 
         try
         {
+            //Set the reader to read the chosen file
+            Reader reader = AccessorFactory.GetFactory(fileChooser.getSelectedFile().getPath()).CreateReader();
+            getSlideViewer().setSlideNumber(0);
             // Reads the presentation from the file
             Presentation presentation = reader.Read(TEST_FILE);
-
-            // Sets the presentation in the SlideViewer
-            getSlideViewer().setPresentation(presentation);
-
-            // Sets the initial slide number to display
-            getSlideViewer().setSlideNumber(0);
         }
         catch (IOException exception)
         {
             // Displays an error message dialog if an IOException occurs during reading
             JOptionPane.showMessageDialog(parent, IO_EXCEPTION + exception, LOADER_ERROR, JOptionPane.ERROR_MESSAGE);
         }
+        parent.repaint();
+    }
+
+    //Private method for creating the fileChooser
+    //With the given accepted file extension
+    private static JFileChooser createJFileChooser()
+    {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(new FileFilter()
+        {
+            @Override
+            public boolean accept(File file)
+            {
+                if (file.isDirectory() )
+                {
+                    return true;
+                }
+                else
+                {
+                    String fileName = file.getName().toLowerCase();
+                    return fileName.endsWith(".xml");
+                }
+            }
+
+            @Override
+            public String getDescription()
+            {
+                return "XML files (*.xml)";
+            }
+        }
+        );
+        return fileChooser;
     }
 }

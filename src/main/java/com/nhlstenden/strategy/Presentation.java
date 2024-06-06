@@ -24,7 +24,6 @@ public class Presentation
 		this.showTitle = "";
 		this.currentSlideNumber = 0;
 		this.showList = new ArrayList<>();
-		this.currentSlide = new Slide();
 		this.clear();
 	}
 
@@ -71,6 +70,9 @@ public class Presentation
 
 	public Slide getCurrentSlide()
 	{
+		this.currentSlide = this.showList.get(0);
+		this.currentSlide.toggleDrawAllItems();
+		this.currentSlide.setNumberOfItemsToDraw(getSize());
 		return this.currentSlide;
 	}
 

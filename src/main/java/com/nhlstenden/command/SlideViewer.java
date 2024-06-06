@@ -69,7 +69,6 @@ public class SlideViewer extends MenuBar
         if(this.presentation != null)
         {
             presentation.clear();
-            setSlideNumber(0);
         }
     }
 

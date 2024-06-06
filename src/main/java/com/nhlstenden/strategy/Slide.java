@@ -21,7 +21,7 @@ public class Slide
     public Slide()
     {
         this.numberOfItemsToDraw = 0;
-        this.drawAllItems = false;
+        this.drawAllItems = true;
         this.items = new Vector<>();
     }
 
