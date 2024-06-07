@@ -68,7 +68,6 @@ public class SlideViewerComponent extends JPanel
     //Paint the component
     public void paintComponent(Graphics graphics, MyStyle style)
     {
-        System.out.println("this is the paintComponent");
         graphics.setColor(BACKGROUND_COLOR);
         graphics.fillRect(0, 0,  this.slide.getDimension("width"), this.slide.getDimension("height"));
 
@@ -83,7 +82,6 @@ public class SlideViewerComponent extends JPanel
     //Set the font and the color
     private void paintPartOfComponent(Graphics graphics)
     {
-        System.out.println("this is the paintPartOfComponent");
         graphics.setFont(this.labelFont);
         graphics.setColor(FONT_COLOR);
         graphics.drawString("Slide " + (1 + this.presentation.getSlideNumber()) + " of " + this.presentation.getSize(), X_POSITION, Y_POSITION);
@@ -92,7 +90,6 @@ public class SlideViewerComponent extends JPanel
     //Draw the slide
     public void draw(Graphics graphics, Rectangle area, ImageObserver view, MyStyle myStyle)
     {
-        System.out.println("this is the draw ");
         float scale = getScale(area);
         drawTitle(graphics, area, myStyle, view, scale);
         drawSlideItems(graphics, myStyle, view, scale, area);

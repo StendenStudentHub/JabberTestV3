@@ -38,10 +38,10 @@ public class CmdOpen extends Command
         JFileChooser fileChooser = createJFileChooser();
         fileChooser.showOpenDialog(this.parent);
 
-        try
-        {
+        try {
             //Set the reader to read the chosen file
-            Reader reader = AccessorFactory.GetFactory(fileChooser.getSelectedFile().getPath()).CreateReader();
+            Reader reader;
+            System.out.println(reader = AccessorFactory.GetFactory(fileChooser.getName()).CreateReader());
             getSlideViewer().setSlideNumber(0);
             // Reads the presentation from the file
             Presentation presentation = reader.Read(TEST_FILE);
