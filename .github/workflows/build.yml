@@ -174,7 +174,7 @@ jobs:
 
       - name: Deploy to local machine
         env:
-          DEPLOY_USER: Bram
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
           DEPLOY_PATH: C:/Users/Bram/Desktop/jabber-release
         run: |
