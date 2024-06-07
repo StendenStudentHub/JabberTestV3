@@ -146,7 +146,7 @@ jobs:
       - name: Deploy to local machine
         env:
           DEPLOY_USER: Bram
-          DEPLOY_HOST: 192.168.86.83
+          DEPLOY_HOST: 192.168.180.81
           DEPLOY_PATH: C:/Users/Bram/Desktop/jabber-release
         run: |
           scp -r ./build/libs/* ${{ env.DEPLOY_USER }}@${{ env.DEPLOY_HOST }}:${{ env.DEPLOY_PATH }}
