@@ -154,17 +154,13 @@ jobs:
   create_release:
     name: Create Release
     runs-on: ubuntu-latest
-    needs: quality
-    if: github.ref == 'refs/heads/develop'
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Verify Git repository
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
         run: |
-          git status
-        
-      - name: Create Release Tag
-        run: |
-          git tag -a release-${{ github.run_number }} -m "Release ${{ github.run_number }}"
-          git push origin release-${{ github.run_number }}
+          gh release create "$tag" \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
+              --generate-notes
