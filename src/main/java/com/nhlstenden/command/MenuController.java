@@ -29,7 +29,7 @@ public class MenuController extends MenuBar
     private final CmdFactory cmdFactory; // Command factory for creating commands
 
     // Constructor to initialize the MenuController with a frame, SlideViewer, and CmdFactory
-    public MenuController(Frame frame, SlideViewer slv, CmdFactory cmdFactory)
+    public MenuController(Frame frame, SlideViewer slideViewer, CmdFactory cmdFactory)
     {
         this.cmdFactory = cmdFactory;
 

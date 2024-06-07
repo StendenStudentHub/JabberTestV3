@@ -17,7 +17,7 @@ public class Presentation
 	private String showTitle;
 	private ArrayList<Slide> showList;
 	private Slide currentSlide;
-	private int currentSlideNumber ;
+	private int currentSlideNumber;
 
 	public Presentation()
 	{
