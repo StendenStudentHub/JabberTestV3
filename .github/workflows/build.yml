@@ -131,10 +131,10 @@ jobs:
           fi
 
       - name: Pull latest changes from production
-        run: git pull --rebase --strategy-option theirs origin production
+        run: git pull --rebase origin production
 
       - name: Merge changes from develop
-        run: git merge develop
+        run: git merge origin/develop --allow-unrelated-histories
 
       - name: Push changes to production
         run: git push origin production
