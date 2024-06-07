@@ -126,14 +126,30 @@ jobs:
     needs: quality
     if: github.ref == 'refs/heads/develop'
     steps:
-      - name: SSH into deployment server and deploy
-        uses: appleboy/ssh-action@master
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
-          host: deployment_server
-          username: user
-          key: ${{ secrets.DEPLOY_KEY }}
-          port: 22
-          run: scp -r ./build/libs/* user@deployment_server:/path/to/deployment
+          java-version: 17
+          distribution: 'zulu'
+
+      - name: Add execute permissions to Gradlew
+        run: chmod +x ./gradlew
+
+      - name: Build the Project
+        run: ./gradlew build
+
+      - name: Add SSH key
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Deploy to local machine
+        env:
+          DEPLOY_USER: Bram
+          DEPLOY_HOST: 192.168.86.83
+          DEPLOY_PATH: C:/Users/Bram/Desktop/jabber-release
+        run: |
+          scp -r ./build/libs/* ${{ env.DEPLOY_USER }}@${{ env.DEPLOY_HOST }}:${{ env.DEPLOY_PATH }}
 
   create_release:
     name: Create Release
