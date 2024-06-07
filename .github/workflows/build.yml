@@ -23,7 +23,7 @@ jobs:
           distribution: 'zulu'
 
       - name: Cache Gradle packages
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
@@ -50,7 +50,7 @@ jobs:
           distribution: 'zulu'
 
       - name: Cache Gradle packages
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
@@ -80,7 +80,7 @@ jobs:
           distribution: 'zulu'
 
       - name: Cache Gradle packages
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
@@ -90,7 +90,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Cache SonarCloud packages
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
@@ -129,7 +129,7 @@ jobs:
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
-          java-version: 17
+          java-version: '17'
           distribution: 'zulu'
 
       - name: Add execute permissions to Gradlew
@@ -157,6 +157,9 @@ jobs:
     needs: quality
     if: github.ref == 'refs/heads/develop'
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
       - name: Create Release Tag
         run: |
           git tag -a release-${{ github.run_number }} -m "Release ${{ github.run_number }}"
