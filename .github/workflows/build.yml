@@ -131,7 +131,7 @@ jobs:
           fi
 
       - name: Pull latest changes from production
-        run: git pull --rebase origin production
+        run: git pull --rebase --strategy-option theirs origin production
 
       - name: Merge changes from develop
         run: git merge develop
@@ -195,18 +195,4 @@ jobs:
       - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VERSION: ${{ env.VERSION }}
-        run: |
-          curl -X POST \
-          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          -H "Content-Type: application/json" \
-          -d '{
-            "tag_name": "'"${{ env.VERSION }}"'",
-            "target_commitish": "develop",
-            "name": "Release '"${{ env.VERSION }}"'",
-            "body": "Release description",
-            "draft": false,
-            "prerelease": false,
-            "generate_release_notes": true
-          }' \
-          https://api.github.com/repos/${{ github.repository }}/releases
+        run: gh release create ${{ env.VERSION }} --notes "Release notes"
