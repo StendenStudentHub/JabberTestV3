@@ -110,27 +110,42 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Switch to production branch
-        run: git checkout production
-
+      
+      - name: Create or switch to production branch
+        run: |
+            if git show-ref --verify --quiet refs/heads/production; then
+             git checkout production
+            else
+             git checkout -b production
+            fi
+      
       - name: Merge changes from develop
         run: git merge develop
-
+      
       - name: Push changes to production
         run: git push origin production
-
+      
   external_deploy:
     name: External Deployment
     runs-on: ubuntu-latest
     needs: quality
     if: github.ref == 'refs/heads/develop'
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'zulu'
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: ${{ runner.os }}-gradle
 
       - name: Add execute permissions to Gradlew
         run: chmod +x ./gradlew
@@ -150,6 +165,7 @@ jobs:
           DEPLOY_PATH: C:/Users/Bram/Desktop/jabber-release
         run: |
           scp -r ./build/libs/* ${{ env.DEPLOY_USER }}@${{ env.DEPLOY_HOST }}:${{ env.DEPLOY_PATH }}
+
 
   create_release:
     name: Create Release
